@@ -1,3 +1,103 @@
 :root {
-    background-color:dimgrey;
+    background-color:dimgray;
+    padding: 0%;
+    margin: 0%;
   }
+
+.HomeSection  {   
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.HomeSection>.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 0vh 5vw;
+    padding-top: 2vh;
+}
+
+.HomeSection>.Header>.Title{
+    position: fixed;
+    font-size: xx-large;
+    width: 90%;
+}
+
+.HomeSection>.Header>.Title p{
+    font-size: small;
+    margin-bottom: 0%;
+}
+.HomeSection>.Header>.Title p{
+    font-size: small;
+    margin-top: 0%;
+    
+}
+
+.HomeSection>.Header>.NavigationWrapper{
+    display: flex;
+    width: 40%;
+    padding-top: 5vh;
+    justify-content: space-between;
+}
+
+.HomeSection>.Header>.NavigationWrapper>.NavigationButton{
+    border-style: none;
+    background: none;
+    padding:0;
+}
+
+.HomeSection>.EnterButton{
+    padding: 1vh 0vh;
+    background-color: blue;
+    border-style: none;
+    color:aliceblue
+}
+
+.HomeSection>.BgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+
+  .HomeSection>.EnterButton{
+    padding: 1vh 0vh;
+    background-color: blue;
+    border-style: none;
+    color:aliceblue
+}
+
+.HomeSection>.Body{
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 0vh 5vw;
+    padding-top: 5vh;
+}
+
+.HomeSection>.Body>.GridWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1%;
+    width: 40%;
+    height: 90%;
+}
+
+.HomeSection>.Body>.GridWrapper>.GridItem{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color:aliceblue;
+    border-radius: 5px;
+}
+
+.HomeSection>.Body>.GridWrapper>.G1{
+    height: 40%;
+}

@@ -1,0 +1,40 @@
+.MenuWrapper {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    flex-direction: column;
+    background-color: blue;
+}
+.MenuWrapper>.Title {
+    font-size: xx-large;
+    padding: 2vh 2vw;
+}
+
+.MenuWrapper>.GridWrapper {
+    width: 70%;
+    height: 80%;
+    display: grid;
+    grid-column: 3;
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr;
+    gap: 2px;
+    align-self: flex-end;
+    margin-top: auto;
+    margin-bottom: 2px;
+    margin-right: 2vw;
+}
+
+.MenuWrapper>.GridWrapper>.GridItem {
+    background-color: antiquewhite;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MenuWrapper>.GridWrapper>.FirstItem {
+    grid-column: span 2;
+}
+
+}
