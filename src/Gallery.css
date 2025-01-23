@@ -1,0 +1,50 @@
+.GalleryWrapper{
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.GalleryWrapper{
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.DisplayWrapper{
+    width: 40%;
+    height: 100%;
+}
+
+.RosterWrapper{
+    width: 60%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.RosterImageWrapper{
+    width: 100%;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    align-items: center;
+    gap: 0.2rem;
+    overflow-y: scroll;
+    scrollbar-width: none
+}
+
+.RosterItem{
+    min-width: 10rem;
+    max-width: 100%;
+    width: auto;
+    background-color: beige;
+}
+
+.RosterItem img{
+    width: 100%;
+    opacity: 10%;
+    height: 100%;
+    border-radius: 2%;
+    vertical-align: middle;
+}

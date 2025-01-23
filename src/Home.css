@@ -20,7 +20,7 @@
 }
 
 .HomeSection>.Header>.Title{
-    position: fixed;
+    position: absolute;
     font-size: xx-large;
     width: 90%;
 }
