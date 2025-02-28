@@ -14,6 +14,9 @@ function Menu (){
                 <div className="GridItem">item4</div>
                 <div className="GridItem">item5</div>
             </div>
+            <div className='MenuExit'>
+                X
+            </div>
         </div>
     )
 }

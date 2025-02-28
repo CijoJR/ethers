@@ -1,7 +1,26 @@
-*{
-  font-family: "Italiana", serif;
-  font-weight: 800;
+:root {
+  --B: #031c21;
+  --DB: #050063;
+  --SB: #48acf0;
+  --SY: #f3ce56;
+  --SR: #e74848;
+  --SP: #ff6cb5;
+  --SG: #9ebbd7;
+  --Base: rgb(254, 254, 252);
+}
+
+* {
+  font-family:"Eagle Lake", 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-style: normal;
   padding: 0;
   margin: 0;
+}
+
+@font-face {
+  font-family: 'Coco';
+  src: url('./assets/Coco-Bold.otf');
+}
+
+h1{
+  font-family: 'Coco';
 }

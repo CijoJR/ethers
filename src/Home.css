@@ -1,17 +1,19 @@
 :root {
-    background-color:dimgray;
+    background-color:var(--one);
     padding: 0%;
     margin: 0%;
   }
 
 .HomeSection  {   
-    height: 100vh;
-    width: 100vw;
+    height: 101vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    color: aliceblue;
 }
 
-.HomeSection>.Header{
+.HomeSection>.HomeHeader{
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -19,33 +21,31 @@
     padding-top: 2vh;
 }
 
-.HomeSection>.Header>.Title{
+.HomeSection>.HomeHeader>.Title{
     position: absolute;
-    font-size: xx-large;
+    font-size: 25%;
     width: 90%;
 }
 
-.HomeSection>.Header>.Title p{
+.HomeSection>.HomeHeader>.Title p{
     font-size: small;
-    margin-bottom: 0%;
-}
-.HomeSection>.Header>.Title p{
-    font-size: small;
-    margin-top: 0%;
-    
+    padding:0;
+    margin:0;
 }
 
-.HomeSection>.Header>.NavigationWrapper{
+.HomeSection>.HomeHeader>.NavigationWrapper{
     display: flex;
     width: 40%;
     padding-top: 5vh;
     justify-content: space-between;
+    
 }
 
-.HomeSection>.Header>.NavigationWrapper>.NavigationButton{
+.HomeSection>.HomeHeader>.NavigationWrapper>.NavigationButton{
     border-style: none;
     background: none;
     padding:0;
+    color: aliceblue;
 }
 
 .HomeSection>.EnterButton{
@@ -56,7 +56,7 @@
 }
 
 .HomeSection>.BgVideo {
-    position: fixed;
+    position: absolute;
     right: 0;
     bottom: 0;
     min-width: 100%;
@@ -94,8 +94,10 @@
     display: flex;
     align-items: center;
     height: 100%;
-    background-color:aliceblue;
+    background-color:#00000050;
+    color: aliceblue;
     border-radius: 5px;
+    backdrop-filter: blur(5px);
 }
 
 .HomeSection>.Body>.GridWrapper>.G1{

@@ -1,38 +1,52 @@
 .MenuWrapper {
-    display: flex;
-    width: 100%;
-    height: 70vh;
-    flex-direction: column;
-    background-color: blue;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  background-color: blue;
+  z-index: 100;
 }
-.MenuWrapper>.Title {
-    font-size: xx-large;
-    padding: 2vh 2vw;
-}
-
-.MenuWrapper>.GridWrapper {
-    width: 70%;
-    height: 80%;
-    display: grid;
-    grid-column: 3;
-    grid-row: 2;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr;
-    gap: 2px;
-    align-self: flex-end;
-    margin-top: auto;
-    margin-bottom: 2px;
-    margin-right: 2vw;
+.MenuWrapper > .Title {
+  font-size: xx-large;
+  padding: 2vh 2vw;
 }
 
-.MenuWrapper>.GridWrapper>.GridItem {
-    background-color: antiquewhite;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.MenuWrapper > .GridWrapper {
+  width: 70%;
+  height: 80%;
+  display: grid;
+  grid-column: 3;
+  grid-row: 2;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+  gap: 1vh;
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: 2vh;
+  margin-right: 2vw;
 }
 
-.MenuWrapper>.GridWrapper>.FirstItem {
-    grid-column: span 2;
+.MenuWrapper > .GridWrapper > .GridItem {
+  background-color: antiquewhite;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MenuWrapper > .GridWrapper > .FirstItem {
+  grid-column: span 2;
+}
+
+.MenuExit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2vh 2vw;
+  width: 10vh;
+  height: 10vh;
+  background-color: antiquewhite;
 }

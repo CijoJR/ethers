@@ -1,0 +1,362 @@
+.Profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--B);
+}
+
+.ProfileWrapper {
+  /* width: 70rem; */
+  width: 100%;
+  height: min-content;
+  z-index: 0;
+  top: 0;
+}
+
+.ProfileHeaderWrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+/* .ProfileHeader {
+  height: calc(100vw / 3);
+  width: 100%;
+  background-color: var(--Base);
+  z-index: -1000;
+  position: fixed;
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5vw;
+  border-radius: 0 0 1rem 1rem;
+} */
+
+
+.ProfileHeader {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--Base);
+  z-index: -1000;
+  position: fixed;
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5vh;
+  border-radius: 0 0 1rem 1rem;
+}
+
+
+
+.ProfilePFP {
+  /* top:calc(-100vw / 3 + (100vw / 6));
+  right: 15vw;
+  background-color: var(--B);
+  position: absolute;
+  width: fit-content;
+  height: calc(100vw / 4);
+  overflow: hidden;
+  /* clip-path: polygon(0% 0%, 150% 30%, 75% 100%, 30% 100%); */
+  /* transform: rotateY(15deg); */
+  /* background-color: azure; */
+  border-radius: 1rem;
+  height: 35vh;
+  left: 3vmin;
+  bottom: 3vmin;
+  box-shadow: 0rem 0rem 0.5rem var(--SB);
+
+}
+
+@keyframes idlePFPxx {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.75);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.ProfilePFP img {
+  z-index: -5;
+  bottom: 0vw;
+  height: 100%;
+  /* opacity: 10%; */
+  border-radius: 1rem;
+  animation: infinite 5s idlePFPxx cubic-bezier(0.175, 0.1.25, 0.32, 1.275);
+}
+
+.ProfileIdentity{
+  color: var(--Base);
+}
+
+.ProfileName {
+  max-width: 30rem;
+  text-overflow: ellipsis;
+  font-family: "Coco";
+  text-align: center;
+  /* color: var(--B); */
+  font-size: 10vh;
+  /* position: absolute;
+  top: 2rem;
+  right: 0; */
+  text-shadow: 0rem 0rem 2rem var(--SB);
+  letter-spacing: 0.25rem;
+}
+
+.Title {
+  text-align: center;
+  /* color: var(--B); */
+  /* position: absolute;
+  top: 6rem;
+  right: 0; */
+  font-size: 2vh;
+  text-shadow: 0rem 0rem 0.5rem var(--SB);
+  letter-spacing: 1rem;
+  line-height: 1rem;
+}
+
+.HeaderBG{
+  height: 100vh;
+  width: 100vw;
+  z-index: -5;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  object-fit:cover;
+  transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.HeaderBG img{
+  height: 100%;
+  display: flex;
+  transform: scale(1.5);
+  margin: auto;
+  position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+
+
+/* 
+.ProfileAbsWrapper {
+  display: flex;
+  z-index: -10;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: calc(100vw / 3);
+  width: 100vw;
+  gap: 2rem;
+  background-color: aqua;
+} */
+
+.ProfileBody {
+  position: relative;
+  width: 100vw;
+  background-color: var(--B);
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem 2rem 0 0;
+
+  /* background-color: aliceblue; */
+}
+
+.ProfileBodyBump {
+  position: absolute;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  height: 5vh;
+  width: 100%;
+  top: -4vh;
+  background-color: var(--B);
+  border-radius: 1rem 1rem 0 0;
+  /* clip-path: polygon(0% 100%, 25% 0%, 75% 0%, 100% 100%); */
+}
+
+.ProfileAchievements {
+  /* background-color: antiquewhite; */
+  width: 100%;
+  /* height: calc(100vh - (100vw / 3)); */
+  position: relative;
+  color: var(--Base);
+  /* background-color: var(--Base); */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  position: relative;
+  /* background-color: antiquewhite;   */
+}
+
+.AchievementGrid {
+  /* top: 8rem;
+  right: 0; */
+  width: 100%;
+  height: 100%;
+  background-color: var(--SY);
+  border-radius: 1rem;
+
+  mix-blend-mode: hard-light;
+  background-blend-mode: hard-light;
+  backdrop-filter: blur(1rem);
+
+  /* position: absolute; */
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ProfileHeroes {
+  height: 100vh;
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.1rem;
+  /* align-items: flex-start; */
+  transition: all 5s linear;
+}
+
+.ProfileHero {
+  position: relative;
+  transition: all 1s ease-in-out;
+  height: 100vh;
+  width: 100%;
+
+  min-width: auto;
+  overflow: hidden;
+}
+
+.ProfileHero:hover {
+  height: 100vh;
+  min-width: 100vh;
+}
+
+.ProfileHero:not(:hover) {
+  min-width: calc((100vw - 100vh) / 5);
+}
+
+.ProfileHeroLayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--B);
+  z-index: 1;
+  mix-blend-mode: hard-light;
+  transition: 2s ease-in-out;
+}
+
+.ProfileHeroLayer:hover {
+  opacity: 0;
+  background-color: var(--SY);
+}
+
+.ProfileHero img {
+  /* background-color: red; */
+  height: 100vh;
+  width: 100vh;
+  /* opacity: 20%; */
+  transform: translateX(-50vh);
+  transition: all 1s ease-in-out;
+  animation-delay: 0.25s;
+}
+
+.ProfileHero:hover img {
+  transform: translateX(0);
+  /* filter:grayscale(); */
+}
+
+.ProfileCollection {
+  color: var(--Base);
+  /* background-color: red; */
+  width: 100%;
+}
+
+.ProfileCollectionBody {
+  /* background-color: wheat; */
+  height: max-content;
+}
+
+.ProfileCollectionHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20rem;
+  position: relative;
+  /* background-color: antiquewhite; */
+  padding: 1rem;
+}
+
+.ProfileCollectionHeader p {
+  width: 50%;
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+p.ProfileCollectionTitle {
+  font-size: 7rem;
+  font-family: "Coco";
+  letter-spacing: 0rem;
+}
+
+.ProfileCollectionGrid {
+  /* background-color: antiquewhite; */
+  display: grid;
+  padding: 0.2rem;
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  align-items: start;
+  gap: 0.1rem;
+  height: fit-content;
+}
+
+.ProfileCollectionCard {
+  background-color: rgb(66, 86, 79);
+  object-fit: contain;
+  overflow: hidden;
+  min-width: 18vh;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.ProfileCollectionCard img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+  will-change: transform;
+  /* opacity: 5%; */
+}
+
+.ProfileGapperDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20rem;
+}
+
+

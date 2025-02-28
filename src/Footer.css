@@ -1,0 +1,126 @@
+.Footer{
+    width: 100vw;
+    height:17rem;
+    background-color: var(--B);
+    display: flex;
+    flex-direction: row;
+    color: var(--Base);
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.FLeft {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    font-size: 10rem;
+    text-overflow: clip;
+    letter-spacing: -0.3rem;
+}
+
+.FLeft>p{
+    max-width: 50rem;
+    opacity: 10%;
+    text-overflow: clip;
+    font-family: 'Coco';
+    width: 100vw;
+    position: absolute;
+    margin: 0%;
+    padding: 0%;
+    line-height: 5rem;
+    font-stretch: ultra-condensed;
+    filter: blur(0.25rem);
+}
+
+.FooterMotto{
+    width: 100vw;
+    position: absolute;
+    font-size: 0.5rem;
+    color: var(--Base);
+    opacity: 80%;
+    letter-spacing: 0.5rem;
+    text-shadow: 0rem 0.1rem 0.25rem var(--SB);
+    bottom:2rem;
+    left: 2.5rem;
+}
+
+.FRight {
+    width: 40%;
+    height: 100%;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+    padding-top: 1rem;
+}
+
+.FRTop {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 0.5rem;
+    background-color: rgba(var(--SB),1);
+    
+}
+
+.FRTop .H{
+    padding: 0rem 1rem ;
+   font-size: larger;
+   letter-spacing: 0.75rem;
+   margin-bottom: 0.5rem;
+   background-color: var(--Base);
+   color: var(--B);
+   font-style:italic;  
+   opacity:60%;
+   width: 90%;
+}
+
+.FRTLeft {
+    text-align: end;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    padding-right: 1rem;
+    padding: 1rem;
+}
+
+.FRTRight {
+    padding: 1rem;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.25rem;
+}
+
+.FRTop p {
+    transition: all 0.5s;
+    width: 100%;
+    opacity:60%;
+}
+
+.FRTop p:hover {
+    opacity: 100%;
+    letter-spacing: 0.75rem;
+    opacity:100%;
+    text-shadow: 0rem 0.1rem 0.25rem var(--SB);
+}
+
+.FRBottom {
+    opacity: 60%;
+    font-size: xx-small;
+    letter-spacing: 0.5rem;
+    z-index: 1;
+    color: var(--Base);
+    text-align: right;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100vw;
+}
