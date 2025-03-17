@@ -3,20 +3,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 2.25rem;
+    position: fixed;
+    font-size: 1rem;  
+    gap: 1.25rem;
+    color: var(--Base);
+    backdrop-filter: blur(1rem);
+    top: 0.25rem;
+    z-index: 3;
+    width: 60rem;
+    align-self: center;
+    border-radius: 5rem;
+    mix-blend-mode:luminosity;
+    overflow: hidden;
+    /* box-shadow: 0rem 0rem 0.5rem var(--SB); */
+    scroll-snap-align: start;
+
+}
+
+/* .Header{
+    background-color: var(--B);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 3rem;
     position: fixed;
     font-size: 1rem;  
     gap: 1rem;
-    color: var(--Base);
+    color: var(--SB);
     backdrop-filter: blur(1rem);
-    top: 0.75rem;
     z-index: 3;
-    width: 90%;
-    align-self: center;
-    border-radius: 2%;
+    width: 100%;
     mix-blend-mode:hard-light;
     overflow: hidden;
-}
+    box-shadow: 0rem 0rem 0.5rem var(--SB);
+    top: 0;
+    border-radius: 0 0 5rem 5rem;
+    
+
+} */
 
 .deco{
     text-decoration: none;
@@ -49,15 +74,16 @@
 
 .HeaderButton{
     width:10rem;
-    font-size: small;
+    font-size: 0.65rem;
     letter-spacing: 0.5rem;
     opacity: 75%;
     transition: all 0.1s;
     text-align: center;
+    cursor: none;
 }
 
 .HeaderButton:hover{
-    font-size: small;
+    font-size: 0.7;
     letter-spacing: 0.75rem;
     opacity: 100%;
 }
@@ -78,3 +104,15 @@
     
 }
 
+.Activated{
+    background-color: var(--Base);
+    height: 1.75rem;
+    border-radius: 5rem;
+    color: var(--SG);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    text-align: center;
+    padding-left: 0.5rem;
+}

@@ -1,55 +1,3 @@
-@keyframes rotateCursor {
-  0% {
-    transform: rotate(calc(30deg * var(--nth-child)));
-    width: 2rem;
-    height: 2rem;
-  }
-  /* 50% {transform: rotate(calc(180deg + (90deg * var(--nth-child))) ) translateX(0rem) rotateY(-90deg) rotateZ(180deg);
-        width: 0.1rem;} */
-  50% {
-    transform: rotate(calc(360deg + (30deg * var(--nth-child))));
-    width: calc(2rem * var(--nth-child));
-    height: calc(2rem * var(--nth-child));
-  }
-
-  100% {
-    transform: rotate(calc(720deg + (30deg * var(--nth-child))));
-    width: 2rem;
-    height: 2rem;
-  }
-}
-
-@keyframes orbin {
-  0% {
-    transform: scale(0.5);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.5);
-  }
-}
-
-/* @keyframes rotateCursor {
-    0% {rotate: 0deg;}
-    100% {rotate: 180deg;}
-  } */
-
-  @keyframes orbsx {
-    0% {
-      transform: scale(2.75);
-    }
-  
-    50% {
-      transform: scale(3);
-    }
-    100% {
-      transform: scale(2.75);
-    }
-  }
-
 .Orb {
   /* animation: orbin infinite 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
   width: 1rem;
@@ -61,40 +9,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.25rem;
+  font-size: 0rem;
   position: absolute;
-}
-
-.Orbs{
-  animation: orbsx infinite 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: var(--B);
-  box-shadow: 0rem 0rem 0.5rem 0.1rem var(--SR);
-  
-  overflow: visible;
-  letter-spacing: 1rem;
-
-  
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 2s;
+  white-space: nowrap;
+  color: transparent;
+  letter-spacing: 0;
 }
 
 
-
-
-@keyframes idleTiny {
+@keyframes idleB {
   0% {
-    transform: scale(1) rotate();
+    transform: scale(1);
+    letter-spacing: 0.25rem;
   }
-
   50% {
-    transform: scale(1.1);
+    transform: scale(1.25);
+
+    letter-spacing: 0.5rem;
   }
   100% {
     transform: scale(1);
+
+    letter-spacing: 0.25rem;
   }
 }
 
-.OrbText{
+.OrbText {
   /* background-color: var(--B); */
-  
+
   color: var(--Base);
   /* box-shadow: 0rem 0rem 0.5rem 0.1rem var(--SR); */
   position: fixed;
@@ -102,8 +45,8 @@
   font-size: 0.55rem;
   letter-spacing: 0.5rem;
   transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  
-  text-shadow:  var(--SB);
+
+  text-shadow: var(--SB);
   text-align: center;
   border-radius: 1rem;
   white-space: nowrap;
@@ -114,8 +57,7 @@
   mix-blend-mode: hard-light;
 }
 
-.OrbTextDot{
-  animation: idleTiny infinite 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.OrbTextDot {
   background-color: var(--Base);
   width: 0.5rem;
   height: 0.5rem;
@@ -123,12 +65,11 @@
   border-radius: 1rem;
   box-shadow: 0rem 0rem 0.5rem 0.25rem var(--SB);
   mix-blend-mode: hard-light;
-
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.OrbAlt{
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
+.OrbAlt {
+  transition: all 5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .Cursor {
@@ -143,42 +84,56 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: inset 0rem 0rem 0.5rem 0.005rem var(--SB),
-    0rem 0rem 1rem 0.25rem var(--SB);
+  /* box-shadow: inset 0rem 0rem 0.5rem 0.005rem var(--SB), */
+  /* 0rem 0rem 1rem 0.25rem var(--SB); */
   mix-blend-mode: hard-light;
 }
 
-.Cursor:active {
-  transform: scale(1.1);
+@keyframes rotateOrb {
+  0% {
+    rotate:360deg;
+  }
+  50% {
+    rotate:180deg;
+  }
+  100% {
+    rotate:0DEG;
+  }
 }
 
-.Line {
-  animation: rotateCursor infinite 10s linear;
-  width: 1rem;
-  height: 1rem;
-  border: solid var(--Base) 0.1rem;
-  position: absolute;
-  z-index: 101;
+.Cursor:has(> .Bloated) ~ .OrbText {
+  width: 4.5rem;
+  height: 4.5rem;
+  translate: -1.75rem -1.75rem;
+  /* background-color: var(--B); */
+  /* animation: infinite rotateOrb 10s cubic-bezier(0.075, 0.82, 0.165, 1); */
+}
 
+.Cursor:has(> .Bloated) ~ .OrbText > .OrbTextDot {
+  /* transform: translateX(3rem); */
+  /* translate:2rem;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: infinite rotateOrb 10s cubic-bezier(0.075, 0.82, 0.165, 1); */
+  /* opacity: 0; */
+
+}
+
+.Cursor:has(> .Bloated) ~ .OrbAlt > .OrbTextDot {
+  /* transform: translateX(3rem); */
+}
+
+
+.Bloated {
+  text-align: center;
+  letter-spacing: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--B);
   box-shadow: 0rem 0rem 0.5rem 0.1rem var(--SB);
-}
-
-.Line:nth-child(1) {
-  transform: rotate(0deg) translateX(0rem);
-  --nth-child: 1;
-}
-
-.Line:nth-child(2) {
-  transform: rotate(30deg) translateX(0rem);
-  --nth-child: 2;
-}
-
-.Line:nth-child(3) {
-  transform: rotate(60deg) translateX(0rem);
-  --nth-child: 3;
-}
-
-.Line:nth-child(4) {
-  transform: rotate(90deg) translateX(0rem);
-  --nth-child: 4;
+  background-color: var(--Base);
+  /* border: solid var(--Base) 0.1rem; */
+  mix-blend-mode: normal;
+  color: transparent;
+  border-radius: 0;
+  
+  /* animation: infinite cubic-bezier(0.175, 0.885, 0.32, 1.275) 5s idleB; */
 }

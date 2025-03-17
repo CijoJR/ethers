@@ -1,14 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Profile.css";
 
 export default function Profile() {
-  const BG = useRef(0);
+  const [page, setPage] = useState("Main");
 
+  return page === "Main" ? <MainProfile /> : null;
+}
+
+function MainProfile() {
+  const BG = useRef(0);
+  const PFP = useRef(0);
   useEffect(() => {
     const moveCursor = (event) => {
       if (BG.current) {
         BG.current.style.transform = `translate(calc((-${event.clientX}px + 50vw ) / 2), 
           calc((-${event.clientY}px + 50vh) / 2)`;
+      }
+      if (PFP.current) {
+        PFP.current.style.transform = `translate(calc(( -50vw + ${event.clientX}px ) / 40 - 25vh), calc((-50vh + ${event.clientY}px) / 20)) scale(2)`;
       }
     };
 
@@ -18,22 +27,33 @@ export default function Profile() {
 
   return (
     <div className="Profile">
+      <div className="ProfileAccents"></div>
+
+      <div className="ProfileMenu">
+        <div className="ProfileMenuInvisible" >test</div>
+        <div className="ProfileMenuVisible" >test</div>
+      </div>
       {/* HEADER */}
       <div className="ProfileWrapper">
         <div className="ProfileHeaderWrapper">
           <div className="ProfileHeader">
             {/* PFP */}
             <div className="ProfilePFP">
-              <img src="https://images.ether.site/avatar/1994.png" alt="" />
+              <div className="ProfilePFPMultiply" />
+              <img
+                src="https://images.ether.site/avatar/1999.png"
+                alt=""
+                ref={PFP}
+              />
             </div>
             {/* IDENTITY */}
             <div className="ProfileIdentity">
               <div className="ProfileName">CeeHoe</div>
-              <div className="Title">Day One</div>
+              <div className="Title">Vampire Hunter</div>
             </div>
             {/* ACHIEVEMENTS */}
             <div className="ProfileAchievements">
-              <div className="AchievementGrid"></div>
+              <div className="AchievementGrid">Hello there! I'm Cee</div>
             </div>
 
             <div ref={BG} className="HeaderBG">
@@ -47,7 +67,7 @@ export default function Profile() {
 
         {/* HEROES */}
         <div className="ProfileBody">
-          <div className="ProfileBodyBump" />
+          {/* <div className="ProfileBodyBump" /> */}
           <div className="ProfileHeroes">
             <div className="ProfileHero">
               <div className="ProfileHero">
@@ -75,48 +95,48 @@ export default function Profile() {
 
           {/* COLLECTION */}
           <div className="ProfileCollection">
-            <div className="ProfileCollectionHeader">
-              <p className="ProfileCollectionTitle">PRIVATE COLLECTION</p>
-              <p>CeeHoe collects 52 Ethers</p>
-            </div>
-            <div className="ProfileCollectionBody">
-              <div className="ProfileCollectionGrid">
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
+              <div className="ProfileCollectionHeader">
+                <p className="ProfileCollectionTitle">PRIVATE COLLECTION</p>
+                <p>CeeHoe collects 52 Ethers</p>
+              </div>
+              <div className="ProfileCollectionBody">
+                <div className="ProfileCollectionGrid">
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
+                  <div className="ProfileCollectionCard">
+                    <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                  </div>
                 </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
-                </div>
-                <div className="ProfileCollectionCard">
-                  <img src="https://images.ether.site/avatar/1999.png" alt="" />
+                <div className="ProfileGapperDiv">
+                  <p>Collection End</p>
                 </div>
               </div>
-              <div className="ProfileGapperDiv">
-                <p>Collection End</p>
-              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

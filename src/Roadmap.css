@@ -1,0 +1,156 @@
+.RoadmapWrapper {
+  height: 100vh;
+  background-color: var(--Base);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  scroll-snap-align: start;
+
+}
+
+.RoadmapHeader{
+  width: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  scroll-snap-align: start;
+  margin-top: calc(2.5rem + 2vh);
+}
+
+.RoadmapTitle{
+  font-family: 'Coco';
+  font-size: 3rem;
+}
+
+.RoadmapSubtitle{
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+  opacity: 	0.5;
+}
+
+
+
+.RoadmapRailContainer{
+  height: 100%;
+  padding: 2rem 5rem 0.5rem 5rem;
+}
+
+.RoadmapRail {
+  left: 0;
+  /* background-color: var(--Base); */
+  display: flex;
+  width: 95vw;
+  height: 100%;
+  gap: 0.25rem;
+
+  overflow-x: scroll;
+  /* scrollbar-width: none; */
+  cursor: none;
+}
+
+.RoadmapRailItem {
+  width: calc(95vw /8);
+  background-color: var(--B);
+  min-width: calc(15vw);
+  width: calc(95vw);
+  height: 75vh;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* scroll-snap-align: start; */
+  transition: all 2.5s cubic-bezier(0.175, 0.885, 0.32, 1);
+}
+
+.RoadmapRailItem:hover {
+  min-width: 60vh;
+}
+
+.RailItemChapter {
+  top: 1rem;
+  left: 3.5rem;
+  /* font-family: "Coco"; */
+  color: var(--SG);
+  font-size: 1.5rem;
+  position: absolute;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+  mix-blend-mode: difference;
+  letter-spacing: 0.75rem;
+  line-height: 5rem;
+}
+
+.RailItemTitle {
+  top: 0;
+  left: 0;
+  /* font-family: "Coco"; */
+  color: var(--SG);
+  font-size: clamp(12px, 10rem, 12.5vh);
+  word-wrap:break-word;
+  position: absolute;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+  mix-blend-mode: difference;
+  line-height: 5rem;
+}
+
+.RailItemLayer {
+  background-color: var(--B);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  mix-blend-mode: hard-light;
+  opacity: 0.75;
+}
+
+.RailItemImage {
+  height: 100%;
+  position: absolute;
+}
+
+.RailItemDescription {
+  position: absolute;
+  color: var(--Base);
+  z-index: 2;
+  width: 60%;
+  right: 0;
+  top: 0;
+  text-align: justify;
+  font-size: 1rem;
+  visibility: hidden;
+  opacity: 0%;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-delay: 1s;
+  padding: 2rem;
+  letter-spacing: 0.1rem;
+}
+
+.RoadmapRailItem:hover > .RailItemDescription {
+  visibility: visible;
+  opacity: 100%;
+
+}
+
+.RoadmapProgressBar {
+  width: 95vw;
+  position: absolute;
+  bottom: 0;
+  justify-self: center;
+  height: 1rem;
+  border: solid 0.15rem var(--B);
+  border-radius: 10rem;
+}

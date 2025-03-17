@@ -7,6 +7,9 @@
   --SP: #ff6cb5;
   --SG: #9ebbd7;
   --Base: rgb(254, 254, 252);
+  background-color:var(--Base);
+  scroll-snap-type: y proximity;
+
 }
 
 * {

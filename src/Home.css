@@ -1,105 +1,166 @@
 :root {
-    background-color:var(--one);
-    padding: 0%;
-    margin: 0%;
-  }
-
-.HomeSection  {   
-    height: 101vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    color: aliceblue;
+  padding: 0%;
+  margin: 0%;
 }
 
-.HomeSection>.HomeHeader{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    padding: 0vh 5vw;
-    padding-top: 2vh;
+.HomeSection {
+  height: 101vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: aliceblue;
+  position: fixed;
+  z-index: 99;
+  background-color: var(--Base);
+  
 }
 
-.HomeSection>.HomeHeader>.Title{
-    position: absolute;
-    font-size: 25%;
-    width: 90%;
+.HomeSection > .HomeHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
-.HomeSection>.HomeHeader>.Title p{
-    font-size: small;
-    padding:0;
-    margin:0;
+.HomeSection > .HomeHeader > .HomeTitle {
+  position: absolute;
+  color: var(--SG);
+  font-size: 30vh;
+  width: 100vw;
+  text-align: center;
+  align-self: center;
+  z-index: -1;
+  mix-blend-mode: difference;
+  bottom: 5vh;
+  margin-left: 1vw;
 }
 
-.HomeSection>.HomeHeader>.NavigationWrapper{
-    display: flex;
-    width: 40%;
-    padding-top: 5vh;
-    justify-content: space-between;
-    
+.HomeSection > .HomeHeader > .HomeTitle p {
+  position: absolute;
+  font-size: 1rem;
+  width: 100vw;
+  text-align: center;
+  align-self: center;
+  z-index: -1;
+  mix-blend-mode: difference;
+  bottom: 70vh;
+  margin-left: 1rem;
+  letter-spacing: 5vh;
 }
 
-.HomeSection>.HomeHeader>.NavigationWrapper>.NavigationButton{
-    border-style: none;
-    background: none;
-    padding:0;
-    color: aliceblue;
+.HomeSection > .HomeHeader > .NavigationWrapper {
+  display: flex;
+  padding-top: 5vh;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding-right: 4rem;
 }
 
-.HomeSection>.EnterButton{
-    padding: 1vh 0vh;
-    background-color: blue;
-    border-style: none;
-    color:aliceblue
+.HomeSection > .HomeHeader > .NavigationWrapper > .NavigationButton {
+  border-style: none;
+  background: none;
+  padding: 0;
+  color: var(--SB);
+  cursor: none;
+  text-decoration: none;
+  letter-spacing: 0.25rem;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-shadow: 0rem 0rem 0.5rem var(--SB);
+  font-size: 1rem;
 }
 
-.HomeSection>.BgVideo {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-  }
-
-  .HomeSection>.EnterButton{
-    padding: 1vh 0vh;
-    background-color: blue;
-    border-style: none;
-    color:aliceblue
+.HomeSection > .HomeHeader > .NavigationWrapper > .NavigationButton:hover{
+  letter-spacing: 0.5rem;
 }
 
-.HomeSection>.Body{
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    padding: 0vh 5vw;
-    padding-top: 5vh;
+.HomeSection > .BgVideo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.HomeSection>.Body>.GridWrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1%;
-    width: 40%;
-    height: 90%;
+.BgVideo img {
+  height: 100%;
+  display: flex;
+  transform: scale(1.5);
+  margin: auto;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
 }
 
-.HomeSection>.Body>.GridWrapper>.GridItem{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color:#00000050;
-    color: aliceblue;
-    border-radius: 5px;
-    backdrop-filter: blur(5px);
+@keyframes idleEtherEnter {
+  0%{letter-spacing: 1rem;}
+  50%{letter-spacing: 1.5rem;}
+  100%{letter-spacing: 1rem;}
 }
 
-.HomeSection>.Body>.GridWrapper>.G1{
-    height: 40%;
+.HomeSection > .EnterButton {
+  background-color: var(--SG);
+  mix-blend-mode: difference;
+  backdrop-filter: blur(1rem);
+  border-style: none;
+  color: var(--B);
+  letter-spacing: 1rem;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0rem 0rem 0.5rem var(--SB);
+  text-shadow: 0rem 0rem 0.5rem var(--SB);
+  height: 2rem;
+  bottom: 5vh;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 3s;
+  cursor: none;
+  animation: infinite idleEtherEnter cubic-bezier(0.19, 1, 0.22, 1) 5s;
+}
+
+.HomeSection > .EnterButton:hover {
+  letter-spacing: 2rem;
+  font-size: 2rem;
+  height: 5rem;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 3s;
+  background-color: var(--SR);
+
+}
+
+
+.HomeSection > .Body {
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 0vh 5vw;
+  padding-top: 5vh;
+}
+
+.HomeSection > .Body > .GridWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1%;
+  width: 20rem;
+  height: 15rem;
+}
+
+.HomeSection > .Body > .GridWrapper > .GridItem {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: var(--B);
+  mix-blend-mode: hard-light;
+  background-blend-mode: hard-light;
+  backdrop-filter: blur(1rem);
+  color: aliceblue;
+  border-radius: 5px;
+}
+
+.HomeSection > .Body > .GridWrapper > .G1 {
+  height: 40%;
 }

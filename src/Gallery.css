@@ -1,15 +1,18 @@
 .GalleryPage {
   width: 100vw;
   height: auto;
+  min-height: 200vh;
   position: relative;
   margin-top: 2.5rem;
+  background-color: var(--Base);
+  scroll-snap-align: start;
 }
 
 
 /* SIDE SCOLLER */
-
+/* 
 .SideScroll {
-  /* background-color: aqua; */
+  background-color: aqua;
   visibility: hidden;
   background-color: beige;
   width: 50vh;
@@ -36,7 +39,7 @@
   background-color: beige;
   width: 50vh;
   height: 90vh;
-}
+} */
 
 /* IMAGE SCROLLER */
 
@@ -49,8 +52,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: -1;
   opacity: 100%;
+  scroll-snap-align: start;
+
 }
 
 .GalleryPage > .GalleryHeader > h1 {
@@ -67,7 +71,6 @@
   letter-spacing: 1vw;
   text-align: center;
   top: 5vh;
-  z-index: -1;
   opacity: 50%;
   text-shadow: 0rem 0rem 0.15rem var(--B);
 }
@@ -116,9 +119,9 @@
   gap: 0.1rem;
   width: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   align-items: start;
-  gap: 1rem;
+  gap: 0.5rem;
   /* background-color:cadetblue; */
   scrollbar-width: none;
 }
@@ -129,20 +132,59 @@
   min-width: 18vh;
   max-width: 100%;
   width: 100%;
+  height: 100%;
   border-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s linear;
+  will-change: transform;
+  position: relative;
+}
+
+@keyframes loaderload{
+  from{ transform: translateY(0); }
+
+  to{ transform: translateY(100%); }
+}
+
+.Loader{
+  width: 100%;
+  height: 100%;
+  background-color: var(--SG);
+  position: absolute;
+  z-index: 55;
+  top:0;
+  left: 0;
+  transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .RosterItem img {
   width: 100%;
   height: 100%;
-  vertical-align: middle;
+  vertical-align: end;
   box-shadow: 1%;
-  transition: all 0.3s ease;
-  will-change: transform;
+  transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+  will-change: transform scale;
+  /* opacity: 10%; */
+  transform: scale(1.25);
+  top:0;
 }
 
-.RosterCard:hover .RosterItem img {
-  transform: scale(1.2) translateZ(0);
+.RosterCard{
+  border-radius: 0.5rem;
+  overflow: hidden  ;
+  /* box-shadow: 0rem 0rem 0.5rem var(--B); */
+  transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.RosterCard:hover img{
+  /* background-color: var(--Base);
+  box-shadow: 0rem 0rem 0.25rem 0.25rem var(--SB);
+  transform: translateY(-1rem);
+  z-index: 999; */
+  /* scale:1.5 */
+  scale: 1.1;
 }
 .RosterCard:hover .RosterInfoEther {
   letter-spacing: 0.5rem;
@@ -205,14 +247,11 @@
 
 .TransDiv{
   top:0;
+  left:0;
   position: fixed;
   min-height: 100vh;
   width: 100vw;
-  background-color: var(--B);
-  background-blend-mode: hard-light;
-  z-index: 2;
-  mix-blend-mode:hard-light;
-  backdrop-filter: blur(4rem);
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -234,10 +273,13 @@
   padding-top: 5rem;
   color: var(--Base);
   width: 100%;
-  min-height: 90vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   gap: 2rem;
+  position: absolute;
+  top:0;
+  left:0;
 }
 
 .TDTLeft{
@@ -255,13 +297,16 @@
 .HeroImg{
   width: 100%;
   height: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
   border-radius: 2%;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
-  z-index: 5;
+  z-index: 3;
   pointer-events: none;
+  top:0;
+  mix-blend-mode: normal;
+
 }
 
 
@@ -279,17 +324,18 @@
   width: 30rem;
   height: 30rem;
   border-radius: 2%;
-  z-index: 2;
-  pointer-events: all;
+  transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+  padding-top: 2.5rem;
+  
 }
 
 .TDHeader{
-  height: 3rem;
-  width: 90%;
+  height: 2.25rem;
+  width: 60rem;
   position: absolute;
   background-color: var(--SB);
-  top: 0.75rem;
-  border-radius: 2%;
+  top: 0.25rem;
+  border-radius: 5rem;
   display: flex;
   justify-self: end;
 }
@@ -333,13 +379,13 @@
 
 }
 
-.TDLine{
+/* .TDLine{
   width: 100%;
   height: 0.1rem;
   background-color: var(--SB);
   top: 0;
   position: absolute;
-}
+} */
 
 .TDMotto{
   position: absolute;
@@ -500,3 +546,17 @@
 .TraitValue{
     font-size: 80%;
 } */
+
+.HeroWrapper{
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0;
+  background-color: var(--B);
+  z-index: 2;
+  backdrop-filter: blur(4rem);
+  transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+}
+
