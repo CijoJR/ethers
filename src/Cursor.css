@@ -7,14 +7,13 @@
   border-radius: 50%;
   box-shadow: 0rem 0rem 0.5rem 0.1rem var(--SB);
   display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 0rem;
   position: absolute;
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 2s;
   white-space: nowrap;
   color: transparent;
   letter-spacing: 0;
+  left:-50vw;
 }
 
 
@@ -54,7 +53,10 @@
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  mix-blend-mode: hard-light;
+  /* mix-blend-mode: hard-light; */
+  left:0;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .OrbTextDot {
@@ -64,7 +66,7 @@
   margin-right: 0.5rem;
   border-radius: 1rem;
   box-shadow: 0rem 0rem 0.5rem 0.25rem var(--SB);
-  mix-blend-mode: hard-light;
+  /* mix-blend-mode: hard-light; */
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -86,7 +88,11 @@
   align-items: center;
   /* box-shadow: inset 0rem 0rem 0.5rem 0.005rem var(--SB), */
   /* 0rem 0rem 1rem 0.25rem var(--SB); */
-  mix-blend-mode: hard-light;
+  /* mix-blend-mode: hard-light; */
+  transition: all 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  will-change: transform;
+  transform: translateZ(0);
+
 }
 
 @keyframes rotateOrb {
@@ -136,4 +142,10 @@
   border-radius: 0;
   
   /* animation: infinite cubic-bezier(0.175, 0.885, 0.32, 1.275) 5s idleB; */
+}
+
+.ClickableOn:hover .Orb{
+  background-color: var(--SB);
+  width: 40rem;
+  height: 40rem;
 }

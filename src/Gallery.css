@@ -3,11 +3,8 @@
   height: auto;
   min-height: 200vh;
   position: relative;
-  margin-top: 2.5rem;
-  background-color: var(--Base);
-  scroll-snap-align: start;
+  /* background-color: var(--Base); */
 }
-
 
 /* SIDE SCOLLER */
 /* 
@@ -45,23 +42,24 @@
 
 .GalleryPage > .GalleryHeader {
   width: 100vw;
-  height: 13rem;
-  position: absolute;
+  height: 100vh;
+  top: 5rem;
+  position: fixed;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   opacity: 100%;
-  scroll-snap-align: start;
-
+  /* background-color: aqua; */
+  /* margin-top: 3vh; */
+  color: var(--Base);
 }
 
 .GalleryPage > .GalleryHeader > h1 {
   width: 100vw;
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
-  opacity: 75%;
 }
 
 .GalleryPage > .GalleryHeader > p {
@@ -71,14 +69,33 @@
   letter-spacing: 1vw;
   text-align: center;
   top: 5vh;
-  opacity: 50%;
   text-shadow: 0rem 0rem 0.15rem var(--B);
+}
+.GalleryBGimg {
+  height: 100vh;
+  top:0;
+  object-fit: cover;
+  position: fixed;
+  z-index: 0;
+  animation: sway 60s infinite;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
 }
 
 .GalleryBody {
   display: flex;
   flex-direction: row;
-  background-color: var(--one);
+  /* background-color: var(--one); */
 }
 
 .GalleryWrapper {
@@ -92,93 +109,151 @@
 }
 
 .GapperDiv {
-  height: 10rem;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 60%;
 }
 
 .GapperDivBottom {
-  margin-top: 1rem;
-  height: 7rem;
-  letter-spacing: 0.75rem;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 15rem;
+  letter-spacing: 1rem;
   font-size: xx-small;
-  opacity: 20%;
-  text-shadow: 0rem 0rem 0.25rem var(--B);
+  text-shadow: 0rem 0rem 0.25rem var(--Base);
+  color: var(--Base);
+  /* margin-top: -5.5rem; */
+}
+.GapperDivBottom > p {
+  position: absolute;
+  bottom: 2.5rem;
 }
 
 .RosterWrapper {
-  width: 100%;
+  width: 100vw;
+  z-index: 2;
+  /* background: linear-gradient(0deg,var(--SB)-10rem,var(--SG)0rem, var(--B)50%, var(--BB)) 60%; */
+
+
   /* background-color: var(--Base); */
   /* background-color: rgb(127, 255, 212); */
 }
+.GapperTop{
+  min-height: calc(100vh - 1.5rem);
+}
 
 .RosterImageWrapper {
-  padding: 2.5rem 1rem 0vw 1rem;
-  gap: 0.1rem;
+  /* display:flex;
+  flex-direction: column;
+  justify-content: start; */
+  /* align-items: center; */
+  padding: 0.25rem 0 0 0 ;
   width: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  align-items: start;
-  gap: 0.5rem;
-  /* background-color:cadetblue; */
+  /* display:; */
+  /* grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); */
+  /* align-items: start;
+  justify-content: center; */
+  /* align-items: start; */
+  /* justify-content: center; */
+  /* gap: 0.5rem; */
+  background-color: var(--B);
+  min-height: 100vh;
+  width: 100vw;
+  /* border-radius: 2rem 2rem 0rem 0rem; */
   scrollbar-width: none;
+  color: aliceblue;
+  transition: 2s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* z-index: 2; */
+  position: relative;
 }
 
 .RosterItem {
+  aspect-ratio: 1 / 1;
   object-fit: contain;
   overflow: hidden;
   min-width: 18vh;
   max-width: 100%;
-  width: 100%;
-  height: 100%;
-  border-radius: 2%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.3s linear;
   will-change: transform;
   position: relative;
-}
-
-@keyframes loaderload{
-  from{ transform: translateY(0); }
-
-  to{ transform: translateY(100%); }
-}
-
-.Loader{
-  width: 100%;
-  height: 100%;
-  background-color: var(--SG);
-  position: absolute;
-  z-index: 55;
-  top:0;
-  left: 0;
-  transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 0.5rem;
 }
 
 .RosterItem img {
   width: 100%;
   height: 100%;
-  vertical-align: end;
   box-shadow: 1%;
-  transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   will-change: transform scale;
   /* opacity: 10%; */
-  transform: scale(1.25);
-  top:0;
+  transform: translate3d(0, 0, 0) scale(1.5);
 }
 
-.RosterCard{
-  border-radius: 0.5rem;
-  overflow: hidden  ;
+.RosterCard {
+  /* background-color: var(--SBB); */
+  padding: 0.25rem;
+  border-radius: 1rem;
+  overflow: hidden;
   /* box-shadow: 0rem 0rem 0.5rem var(--B); */
   transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.RosterCard:hover img{
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 200%;
+  }
+}
+.RosterItemPlaceholder {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    var(--B) 60%,
+    var(--Base),
+    var(--B)
+  );
+  mix-blend-mode: lighten;
+  z-index: 10;
+  position: absolute;
+  background-size: 100% 250%;
+  animation: gradientAnimation 1s infinite linear;
+  mask-image: url(src/assets/Icons/EtherPlaceholder.png);
+  mask-size: 100%;
+}
+
+.RosterItemBlack {
+  width: 100%;
+  height: 100%;
+  background-color: var(--B);
+  opacity:0.5;
+  z-index: 9;
+  position: absolute;
+}
+
+.RosterItemBlackP {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 11;
+  mix-blend-mode: hard-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.75rem;
+  font-size: 0.5rem;
+  color: var(--Base);
+}
+
+.RosterCard:hover img {
   /* background-color: var(--Base);
   box-shadow: 0rem 0rem 0.25rem 0.25rem var(--SB);
   transform: translateY(-1rem);
@@ -191,11 +266,11 @@
   opacity: 50%;
 }
 .RosterCard:hover .RosterInfoBase {
-  letter-spacing: 0.70rem;
+  letter-spacing: 0.7rem;
   opacity: 50%;
 }
 .RosterCard:hover .RosterInfoToken {
-  letter-spacing: 0.70rem; 
+  letter-spacing: 0.7rem;
 }
 
 .RosterInfo {
@@ -207,69 +282,60 @@
   align-items: center;
   height: 4rem;
   position: relative;
+  /* background-color: var(--SBB); */
 }
 
 .RosterInfoEther {
-  font-family: "Coco";
-  position: absolute;
-  font-size: x-large;
-  top: 1.25rem;
-  letter-spacing: 0.25rem;
+  /* font-family: "Coco"; */
+  font-size: 1.5rem;
+  top: 0rem;
+  letter-spacing: -0.1rem;
   transition: all 0.25s;
 }
 
 .RosterInfoBase {
-  position: absolute;
-  top: 2.5rem;
-  font-size: xx-small;
+  margin-top: -0.75rem;
+  font-size: 0.5rem;
   letter-spacing: 0.5rem;
   transition: all 1s;
 }
 
 .RosterInfoToken {
   font-family: "Coco";
-  color: var(--SB);
+  color: var(--B);
+  opacity: 0.7;
   position: absolute;
   z-index: -1;
-  top: -1.2rem;
-  font-size: 5rem;
+  /* top: -1.2rem; */
+  font-size: 4rem;
   letter-spacing: 0rem;
-  opacity: 20%;
   transition: all 1s;
-  text-shadow: 0rem 0rem 0.25rem var(--SB);
+  text-shadow: 0rem 0rem 0.25rem var(--Base);
+  width: 100%;
+  text-align: right;
 }
 
-
-.Hidden{
+.Hidden {
   visibility: hidden;
 }
 
-
-.TransDiv{
-  top:0;
-  left:0;
+.TransDiv {
+  top: 0;
+  left: 0;
   position: fixed;
   min-height: 100vh;
   width: 100vw;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-
-
-
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-.TDTop{
+.TDTop {
   padding-top: 5rem;
   color: var(--Base);
   width: 100%;
@@ -278,73 +344,151 @@
   justify-content: center;
   gap: 2rem;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
 
-.TDTLeft{
+.TDTLeft {
   width: 50%;
   display: flex;
   justify-content: end;
 }
 
-.TDTLeft img{
+.TDTLeft img {
   width: 40rem;
   height: 40rem;
   border-radius: 2%;
 }
 
-.HeroImg{
+.HeroImg {
   width: 100%;
-  height: 100%;
-  margin-top: 3rem;
-  border-radius: 2%;
+  margin-top: 5.5rem;
   position: absolute;
   display: flex;
   justify-content: center;
-  z-index: 3;
-  pointer-events: none;
-  top:0;
+  z-index: 101;
+  pointer-events: auto;
+  top: 0;
   mix-blend-mode: normal;
-
 }
 
-
-
-.HeroImgSpace{
-  width: 50%;
+.HeroImgZoomed {
+  width: 100%;
   height: 100%;
+  margin-top: 0rem;
+  position: fixed;
   display: flex;
-  justify-content: end;
-  padding-right: 2rem;
-  pointer-events: none;
+  justify-content: center;
+  z-index: 101;
+  pointer-events: auto;
+  top: 0;
+  mix-blend-mode: normal;
+  /* background-color: bisque; */
 }
-
-.HeroImg img{
-  width: 30rem;
-  height: 30rem;
-  border-radius: 2%;
-  transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
-  padding-top: 2.5rem;
+.expand{
+  position: absolute;
+  z-index: 1;
+  bottom:2.5rem;
+  /* display: none; */
+  opacity:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  /* mix-blend-mode: exclusion; */
+  color:var(--Base);
+  stroke: var(--Base);
+  letter-spacing: 0.75rem;
+  height: 100%;
+  gap: 1rem;
+  transition:cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s all;
   
 }
 
-.TDHeader{
-  height: 2.25rem;
-  width: 60rem;
-  position: absolute;
-  background-color: var(--SB);
-  top: 0.25rem;
-  border-radius: 5rem;
+.HeroImgNotZoomed .HeroImgSpace:hover .expand{
+  /* display: inline-block; */
+  opacity: 1;
+}
+
+.HeroImgNotZoomed .HeroImgSpace:hover{
+  /* display: inline-block; */
+  /* transform: rotateY(10deg); */
+}
+
+.HeroImgSpace {
+  /* background-color: antiquewhite; */
+  width: 30rem;
+  aspect-ratio: 1/1;
+  pointer-events: auto;
+  position: fixed;
+  background: var(--B);
+  overflow: hidden;
+  right: calc(50% + 1rem);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s all;
+
+}
+
+.HeroImgZoomed .HeroImgSpace{
+  width: 80vh;
+  right: 50%;
+  bottom: 50%;
+  translate: 50% 50%;
+}
+
+.darkenImg{
+  transition:cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s all;
+  mask-image: linear-gradient(360deg, black,transparent);
+}
+
+.HeroImgSpace:hover .darkenImg{
+  position:absolute;
+  width: 110%;
+  height:110%;
+  background-color: var(--SBB);
+  mix-blend-mode: multiply;
+  backdrop-filter: blur(4px);
+}
+
+
+.HeroBGBlackZoomed{
+  position: fixed;
+  height:100%;
+  width:100%;
+  background: var(--SBB);
+  z-index:100;
+  mix-blend-mode: multiply;
+  pointer-events: all;
+}
+.HeroImage{
+  width: 100%;
+  height:100%;
+}
+
+.TDHeader {
+  /* z-index: 3; */
+  height: 50vh;
+  width: 100vw;
+  position: fixed;
+  bottom: -20vh;
   display: flex;
   justify-self: end;
+  mix-blend-mode: hard-light;
+  /* background: linear-gradient(0deg,var(--SG)-25%,var(--SP)); */
+  mask-image: linear-gradient(180deg,transparent ,black);
 }
 
-.TDTRight{
+.TDTRight {
+  /* mix-blend-mode:luminosity; */
   width: 50%;
+  /* background-color: var(--Base); */
 }
 
-.TDTraitsWrapper{
+.TDTraitsWrapper {
+  z-index:2;
   position: absolute;
   top: 7rem;
   margin-top: 10rem;
@@ -352,10 +496,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.5rem;
+  background-blend-mode: color-dodge;
 }
 
-.TDTrait{
+.TDTrait {
   background-color: var(--SB);
+  background: radial-gradient(180deg, transparent, var(--SG));
   height: 4rem;
   border-radius: 0.25rem;
   padding: 0.1rem 0.5rem;
@@ -363,20 +509,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-blend-mode: multiply;
 }
 
-.TDTraitName{
+.TDTraitName {
   font-size: 0.5rem;
   letter-spacing: 0.25rem;
-  
 }
 
-.TDTraitValue{
+.TDTraitValue {
   font-size: small;
-  overflow:hidden;
-  white-space:nowrap;
-  
-
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: capitalize;
 }
 
 /* .TDLine{
@@ -387,23 +532,22 @@
   position: absolute;
 } */
 
-.TDMotto{
+.TDMotto {
   position: absolute;
   left: 0;
   top: 0;
-  font-family: 'Coco';
-  font-size: 11rem;
+  font-family: "Coco";
+  font-size: 30vh;
   letter-spacing: 0;
-  line-height: 10rem;
+  line-height: 15vh;
   opacity: 50%;
-  max-width: 60rem;
+  max-width: 90%;
   z-index: -1;
-  mix-blend-mode:hard-light;
-  filter: blur(0.5rem);
+  /* mix-blend-mode: hard-light; */
+  filter: blur(0.3rem);
 }
 
-
-.TDEther{
+.TDEther {
   color: var(--SB);
   font-size: 1.25rem;
   letter-spacing: 1rem;
@@ -412,69 +556,88 @@
   top: 5rem;
 }
 
-
-
-.TDToken{
+.TDToken {
   color: var(--SB);
-  font-family: 'Coco';
-  font-size: 13rem;
+  font-family: "Coco";
+  font-size: 12rem;
   position: absolute;
-  top: 2.5rem
+  top: 2.5rem;
 }
 
-.TDOwner{
+.TDOwner {
   color: var(--Base);
   font-size: 0.7rem;
   position: absolute;
-  top: 15rem;
+  top: 14.25rem;
   letter-spacing: 0.1rem;
-  width: 25rem;
+  width: 30rem;
   text-overflow: ellipsis;
   opacity: 75%;
 }
 
-.GalleryButtons{
-  bottom:1rem;
+.ExitGuide{
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom:0.5rem;
+  color: var(--B);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 1rem;
+  width: 100%;
+  mix-blend-mode:exclusion;
+  gap: 1rem;
+}
+
+.GalleryButtons {
+  margin-top: -3rem;
+  bottom: 2.5rem;
   position: sticky;
   height: 3rem;
   width: 3rem;
-  background-color: var(--B);
+  background-color: var(--BB);
   z-index: 1;
-  mix-blend-mode:hard-light;
-  background-blend-mode: hard-light;
-  backdrop-filter: blur(4rem);
+  /* mix-blend-mode: hard-light; */
+  /* background-blend-mode: hard-light; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 0.5rem;
-  transition: all 0.25s cubic-bezier(0.215, 0.610, 0.355, 1);
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
   left: calc(50vw - 1.5rem);
+  color: var(--Base);
+  /* border: 2px solid var(--B); */
 }
 
-.GalleryButtons.Active{
+.GalleryButtons.Active {
   height: 100vh;
   width: 100vw;
   left: 0;
   bottom: 0;
   position: fixed;
   border-radius: 0%;
-  background-color: var(--B);
+  background-color: var(--BB);
+  justify-content: end;
+  padding-bottom: 1rem;
 }
 
-.GalleryButtons:not(.Active):hover{
+.GalleryButtons:not(.Active):hover {
   transform: scale(1.1);
 }
 
-.GalleryButtons:not(.Active):active{
+.GalleryButtons:not(.Active):active {
   transform: scale(0.9);
-
 }
 
-.GalleryButtons .TDMotto{
-  color: var(--SB);
-  opacity: 20%;
+.GalleryButtons .TDMotto {
+  color: var(--SBB);
+  opacity: 10%;
 }
 
 /* .GalleryButtons .UpperButton{
@@ -501,16 +664,12 @@
 
 .material-symbols-sharp {
   width: 3rem;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 3rem;
   color: var(--Base);
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 1000,
-  'GRAD' 0,
-  'opsz' 88
+  font-variation-settings: "FILL" 0, "wght" 1000, "GRAD" 0, "opsz" 88;
 }
 
 /* 
@@ -547,16 +706,222 @@
     font-size: 80%;
 } */
 
-.HeroWrapper{
+.HeroWrapper {
   z-index: 2;
   position: fixed;
   width: 100%;
   height: 100%;
-  top:0;
-  background-color: var(--B);
+  top: 0;
   z-index: 2;
-  backdrop-filter: blur(4rem);
   transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  background-color: transparent;
+  transform: translate3d(0, 0, 0);
   /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
 }
+
+.HeroBGBlack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  mix-blend-mode: luminosity;
+  background-color: var(--B);
+  backdrop-filter: blur(4rem);
+}
+
+
+.Traitslist{
+  position: absolute;
+  /* display: flex; */
+  top: 0;
+  left: 0;
+  /* background-color: blue; */
+  width: 100%;
+  height: 100%;
+  color: aliceblue;
+  overflow: scroll;
+  /* padding-left: 2rem; */
+  z-index: 0;
+  mask-image: linear-gradient(transparent -30%, black 10%,black 90%, transparent 120%);
+  scrollbar-width: none;
+  /* mix-blend-mode: color-dodge; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.GapperDivTL{
+  min-height: 50vh;
+  width: 100%;
+}
+
+.GapperDivTL1{
+  min-height: 20vh;
+  width: 100%;
+}
+
+.TraitTab{
+  user-select: none;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  /* margin-bottom: 1rem; */
+}
+
+.TraitTabHeader:hover{
+  letter-spacing: 0.1rem;
+  /* width: 30rem;
+  min-width: 50%; */
+  background: linear-gradient(90deg, var(--SG)25%, var(--SBB), transparent);
+
+}
+
+
+.TraitTabHeader, .TraitTabHeaderOpen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25rem;
+  max-width: 60%;
+  /* background: linear-gradient(90deg,var(--SB)60,var(--SBB), transparent); */
+  background-blend-mode: hard-light;
+  padding: 0.25rem;
+  padding-left: 2.5rem;
+  font-size: 2rem;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+  /* background: linear-gradient(90deg, var(--SG)-20%, var(--SBB)70%); */
+  backdrop-filter: blur(1rem);
+  /* background: linear-gradient(90deg, var(--SG)-20%, var(--SBB) 70%,transparent);; */
+
+  
+}
+.TraitTabHeaderOpen{
+  background: linear-gradient(90deg,var(--SBB)25%,var(--SBB)50%,transparent);
+  width: 37.5rem;
+  max-width: 65%;
+  /* background: linear-gradient(90deg,var(--SY),var(--SY), transparent); */
+  letter-spacing: 0.2rem;
+}
+.Coco{
+  font-family: 'Coco';
+
+}
+.TraitTabItems{
+  
+  letter-spacing: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  /* padding-bottom: 0.2rem; */
+  /* overflow: hidden; */
+}
+/* .TraitTabHeaderOpen+.TraitTabItems{
+} */
+
+.TraitTabItem{
+  align-items: start;
+  justify-content: space-between;
+  letter-spacing: 0.25rem;
+  /* mask-image: linear-gradient(90deg,black 50%,transparent); */
+  width: 30rem;
+  max-width: 55%;
+  gap: 0.25rem;
+  padding-left: 4rem;
+  display: flex;
+  flex-direction: row;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+  /* background: linear-gradient(90deg, var(--SG)-20%, var(--SBB)70%); */
+}
+.TraitTabItem:hover{
+  /* letter-spacing: 0.1rem; */
+  background: linear-gradient(90deg, var(--SG)-20%,transparent 60%);;
+}
+.TraitTabItemOpen{
+  align-items: start;
+  justify-content: space-between;
+  letter-spacing: 0.25rem;
+  /* mask-image: linear-gradient(90deg,black 50%,transparent); */
+  width: 30rem;
+  max-width: 55%;
+  gap: 0.25rem;  
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: row;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+  background: linear-gradient(90deg,var(--SP)-50%,transparent 40%);
+  /* color: black; */
+
+}
+
+.Traitslist h3{
+  font-size: 3rem;
+  font-family: 'Coco';
+  padding-left: 2.5rem;
+  color: var(--Base);
+  letter-spacing: 0.2rem;
+}
+
+.TraitslistLine{
+  margin-bottom: 0.25rem;
+  min-height: 2px;
+  width: 60rem;
+  mask-image: linear-gradient(90deg,black 50%,transparent);
+  background-color: var(--SBB);
+  max-width: 50%;
+
+}
+
+.TraitslistLine2{
+  margin-top: 1rem;
+  min-height: 2px;
+  width: 60rem;
+  mask-image: linear-gradient(90deg,black 50%,transparent);
+  background-color: var(--SBB);
+  max-width: 50%;
+
+}
+
+.traitIconSVG{
+  position: absolute;
+  z-index: 5;
+  box-shadow: 0 0 1rem 0.1rem var(--SBB);
+  border-radius:0.5rem;
+  mix-blend-mode: color-dodge;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.traitIconSVG:hover{
+  transform: scale(1.1)
+}
+
+.traitCounts{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+  padding: 1rem;
+  bottom: 0;
+  right: 0;
+  color: var(--Base);
+  width: 40%;
+  height: 100%; 
+  /* background-color:red; */
+}
+
+.TCStats{
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.TCBig{
+  font-size: 4rem;
+}
+.TCSmall{
+  font-size: 2rem;
+  
+}
+
 

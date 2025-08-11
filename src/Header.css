@@ -1,24 +1,35 @@
 .Header{
-    background-color: var(--B);
+    /* background-color: var(--B); */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2.25rem;
     position: fixed;
     font-size: 1rem;  
-    gap: 1.25rem;
+    gap: 1.5rem;
     color: var(--Base);
-    backdrop-filter: blur(1rem);
-    top: 0.25rem;
-    z-index: 3;
-    width: 60rem;
+    height: 2.25rem;
+    /* border-radius: 0rem 0rem 5rem 5rem; */
+    z-index: 5;
     align-self: center;
-    border-radius: 5rem;
-    mix-blend-mode:luminosity;
-    overflow: hidden;
-    /* box-shadow: 0rem 0rem 0.5rem var(--SB); */
-    scroll-snap-align: start;
+    padding: 0.5rem 0 2rem 0;
+/* Suggested code may be subject to a license. Learn more: ~LicenseLog:915718979. */
+    width: 100%;
+    /* mix-blend-mode:luminosity; */
+    /* overflow: hidden; */
+    /* box-shadow: 0 0 0.5rem 1px var(--SB);  */
 
+    /* box-shadow: 0rem 0rem 0.25rem var(--SB); */
+    
+}
+
+.HeaderBGColor{
+    position: absolute;
+    
+    height: 100%;
+    width: 100%;
+    /* backdrop-filter: blur(1rem); */
+    background: var(--B);
+    mask-image: linear-gradient(to top, transparent, black);
 }
 
 /* .Header{
@@ -69,23 +80,34 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    gap: 1rem;
+    z-index: 6;
 
 }
 
 .HeaderButton{
-    width:10rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.5rem;
-    opacity: 75%;
+    width:7.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2rem;
     transition: all 0.1s;
     text-align: center;
     cursor: none;
+    /* background-color: var(--B); */
+    height: 1.75rem;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .HeaderButton:hover{
     font-size: 0.7;
-    letter-spacing: 0.75rem;
-    opacity: 100%;
+    letter-spacing: 0.3rem;
+    /* box-shadow: 0 0 1rem var(--SB); */
+    color: var(--SB);
+    text-shadow: 0 0 2rem var(--SB);
+
 }
 
 .HeaderMotto{
@@ -104,15 +126,17 @@
     
 }
 
-.Activated{
+.Activated, .Activated:hover{
     background-color: var(--Base);
     height: 1.75rem;
     border-radius: 5rem;
-    color: var(--SG);
+    color: var(--SB);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10rem;
+    width: 7.5rem;
     text-align: center;
     padding-left: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.1rem var(--SB);
+
 }

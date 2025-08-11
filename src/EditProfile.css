@@ -1,0 +1,606 @@
+.ProfileEdit {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--B);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* padding: 5rem 0; */
+  /* background-image: url(https://pbs.twimg.com/media/GwfWGEJWMAADqbA?format=jpg&name=medium); */
+  background-position: 100% 100%;
+  background-size: 200%;
+  background-repeat: no-repeat;
+}
+
+.PETopWrapper {
+  /* background-color: red; */
+  /* padding: 0 1rem; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* overflow: hidden; */
+  /* gap: 1rem; */
+}
+
+.PEPreview {
+  /* position: absolute; */
+  /* opacity: 0; */
+  width: 60%;
+  max-width: 60rem;
+  min-width: 37.5rem;
+  height: 100%;
+  /* max-height: 100%; */
+  /* background-color: var(--SB); */
+  /* border-radius: 1rem; */
+  /* border: 0.1rem solid var(--SG); */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  /* z-index: 3 */
+}
+
+.PEButtonWrapper {
+  /* background-color: beige; */
+  /* padding: 0.5rem 1.5rem; */
+  position: absolute;
+  /* height: 20%; */
+  height: 100%;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5rem;
+  /* pointer-events: none; */
+  /* gap: 0.5rem; */
+  /* border-radius: 2rem; */
+  /* border: 0.1rem solid var(--SG); */
+}
+
+.PEButton {
+  border: 0.05rem solid var(--SG);
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(180deg, var(--SBB) -1rem, transparent 2.5rem);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: var(--SG);
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+  /* mix-blend-mode: hard-light; */
+}
+
+.PEButton svg {
+  transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: rotateZ(0deg) translateZ(0);
+}
+
+.PEButtonActive svg {
+  transform: rotateZ(45deg) translateZ(0);
+}
+
+.PEButtonActive {
+  background: linear-gradient(180deg, var(--SG) -5rem, transparent 5rem);
+}
+
+.PEButton:hover svg {
+  transform: rotateZ(45deg);
+}
+
+.PEButton p {
+  pointer-events: none;
+  position: absolute;
+  left: calc(-200%);
+  width: 200%;
+  text-align: end;
+  transform: translateZ(0);
+  opacity: 0;
+  transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.PEButtonActive p {
+  opacity: 1;
+  transform: translateX(-0.5rem);
+} 
+
+.PEButton:hover p {
+  transform: translateX(-0.75rem);
+  opacity: 1;
+}
+
+.PEPHeader {
+  min-height: 35%;
+  height: 35%;
+  width: 100%;
+  background-color: var(--BB);
+  position: relative;
+  border: 0.1rem solid var(--SG);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 2rem 2rem;
+}
+
+.PEPHeader img {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  transition: all 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateZ(0);
+}
+
+.PEPPP {
+  border: 0.1rem solid var(--SG);
+  height: 25%;
+  aspect-ratio: 1/1;
+  background-color: red;
+  border-radius: 1rem;
+  position: absolute;
+  top: calc(10% + 2.5rem);
+  left: 2rem;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PEPPP img {
+  position: absolute;
+  height: 120%;
+  width: 120%;
+  bottom: -10%;
+  left: -10%;
+}
+
+.PEPSave{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 2rem;
+  width: 9rem;
+  background: var(--BB);
+  color: var(--Base);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--SG);
+  transition: all 0.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+  letter-spacing: 0.25rem;
+}
+.PEPSave:hover{
+  background: linear-gradient(180deg, var(--SG) -2.5rem, transparent 2.5rem);
+  letter-spacing: 0.1rem;
+}
+.PEPGrid {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto; /* center the grid horizontally */
+  padding: 1rem 3.5rem;
+  margin-bottom: 7rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: 0.5rem;
+  justify-content: start; /* items start with no stretch */
+  align-items: start;      /* top align to remove row gaps */
+  position: relative;
+  z-index: 2;
+  color: var(--Base);
+  /* background-color: red; */
+}
+
+.PEPGridItem {
+  border: 0.1rem solid var(--SG);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.PEPGap{
+  width: 100%;
+  height : 100%; 
+}
+
+.PEPInfo {
+  padding-left: 4rem;
+  padding-top: 3.5rem;
+  width: 100%;
+  color: var(--Base);
+  z-index: 2;
+  border-radius: 2rem;
+  /* background-color: red; */
+  /* border-bottom: 0.1rem solid var(--SG); */
+}
+
+.PEPInfo2 {
+  /* margin-top: 3.5rem; */
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  width: calc(100%);
+  max-height: 7rem;
+  color: var(--Base);
+  z-index: 2;
+  background-color: var(--BB);
+  background: linear-gradient(0deg, var(--SBB)-5rem, transparent );
+  border-bottom: 0.1rem solid var(--SG);
+  border-radius: 2rem;
+  box-sizing: border-box;
+  padding: 0rem 1.5rem 1.25rem 1.5rem;
+}
+.PEPInfo2 p {
+  /* border: 0.1rem solid var(--SG); */
+  padding: 0.5rem 1rem;
+  width: 100%;
+  height: 100%;   
+  border-radius: 0.5rem;
+  /* background-color: aqua; */
+  letter-spacing: 0.25rem;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  
+  /* opacity: 0.5; */
+}
+
+.PEPInfo h3 {
+  font-size: 2rem;
+  font-family: "Coco";
+}
+.PEPInfo h4 {
+  letter-spacing: 0.25rem;
+  font-weight: normal;
+  margin-top: -0.25rem;
+}
+.PEPInfo p {
+  letter-spacing: 0.25rem;
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+  opacity: 0.5;
+}
+.PEPContent > p {
+  padding-bottom: 0.5rem;
+  color: var(--Base);
+  width: 25rem;
+  text-align: center;
+  letter-spacing: 0.5rem;
+  border-bottom: 0.1rem solid var(--SG);
+  font-size: 0.8rem;
+}
+.PEPGridBG {
+  position: absolute;
+  height: 70%;
+  width: 100%;
+  top: 20%;
+  background: linear-gradient(180deg, var(--SBB)-5rem, transparent 10rem);
+  box-sizing: border-box;
+  /* border-top: 0.1rem solid var(--SG); */
+
+  z-index: 0;
+}
+.PEPSWrapper {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  width: 50%;
+  height: 3rem;
+  /* background: linear-gradient(180deg, var(--SBB)-5rem, transparent 5rem);
+  background-color: rgba(0, 0, 0, 0.75); */
+  display: flex;
+  justify-content: end;
+  gap: 0.2rem;
+}
+.PEPSItem {
+  background: linear-gradient(180deg, var(--SBB) -1rem, transparent 2.5rem);
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 2rem;
+  /* border-top: 0.2rem solid var(--SG);
+  border-left: 0.1rem solid var(--SG);
+  border-right: 0.1rem solid var(--SG); */
+  mix-blend-mode: hard-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.PEPSItem svg {
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.PEPSItem:hover svg {
+  transform: rotateZ(45deg);
+}
+
+.PEPIdleWrapper{
+  position: absolute;
+  bottom: 0;
+  min-height: 100%;
+  height: 100%;
+  width:100%;
+}
+
+
+
+.PEControls {
+  /* position: absolute; */
+  width: 100%;
+  /* max-width: 50rem; */
+  /* min-width: 20rem; */
+  height: 100%;
+  background-color: var(--B);
+  /* border-radius: 1rem; */
+  /* border: 0.1rem solid var(--SG); */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.PECwrapper {
+  width: 100%;
+  height: 100%;
+  color: var(--Base);
+}
+
+.PECHeader{
+  pointer-events: none;
+  position: absolute;
+  width: calc(100%);
+  height: 12rem;
+  padding-left: 1.5rem;
+  padding-top: 4rem;
+  /* border-bottom: 0.1rem solid var(--SG); */
+  min-width: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  z-index: 2;
+  background: linear-gradient(180deg, var(--BB)30%, transparent);
+  mask-image: linear-gradient(180deg, var(--BB)0%, transparent);
+  backdrop-filter: blur(2rem);
+  /* mix-blend-mode: color-dodge; */
+}
+.PECHeader2{
+  pointer-events: none;
+  position: absolute;
+  width: calc(100%);
+  height: 4rem;
+  padding-left: 1.5rem;
+  padding-top: 4rem;
+  /* border-bottom: 0.1rem solid var(--SG); */
+  min-width: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  z-index: 1;
+  background: linear-gradient(0deg, var(--BB)30%, transparent);
+  mask-image: linear-gradient(0deg, var(--BB)0%, transparent);
+  backdrop-filter: blur(2rem);
+  bottom:0;
+  /* mix-blend-mode: color-dodge; */
+}
+.PECHeaderI{
+  position: absolute;
+  pointer-events: none;
+  width: calc(100% - 5rem);
+  margin-left: 2.5rem;
+  padding-top: 3.5rem;
+  z-index: 2;
+  border-bottom: 0.1rem solid var(--SG);
+  box-sizing: border-box;
+
+}
+
+.PECwrapper h2 {
+  font-weight: normal;
+  font-size: 2rem;
+  font-family: "Coco";
+}
+
+.PECwrapper h3 {
+  font-weight: normal;
+  font-size: 1rem;
+  width: calc(100% - 5rem);
+  padding-bottom: 1rem;
+  letter-spacing: 0.25rem;
+}
+
+.PEPContent{
+  width: 100%;
+  min-height: min-content;
+  /* background-color:beige; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 5rem 0; */
+  box-sizing: border-box;
+}
+
+.PECGrid {
+  display: grid;
+  /* background-color: tan; */
+  gap: 0.75rem; 
+  grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+  padding: 10rem 1.5rem 10rem 1rem;
+  max-height: calc(100%);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  
+}
+
+.PECWItem {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--BB);
+  position: relative;
+  overflow: hidden;
+  /* border-radius: 0.5rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.PECWItemwrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+    /* border-radius: 0.5rem; */
+  /* border: 0.1rem solid var(--SG); */
+}
+
+.PECWItem img {
+  position: absolute;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.PECWItem:hover img {
+  transform: scale(1.4);
+}
+
+.PECBio{
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: start;
+  height: 100%;
+  padding: 2rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  padding-bottom: 15rem;
+  box-sizing: border-box;
+  padding-top: 10rem;
+}
+
+.PECBioItem{
+  width:100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.PECBioItem textarea{
+  height: 5rem;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  
+}
+
+.PECBioItem input{
+  height: 2rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  max-width: 25rem;
+}
+
+
+
+.TitleGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  /* padding: 1rem; */
+  /* background-color: blue; */
+  height: 100%;
+  width: 100%;
+  color: var(--Base);
+  box-sizing: border-box;
+  gap: 0.5rem;
+}
+
+.TitleItem{
+  background-color: var(--BB);
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--SG);
+  transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+  position: relative;
+}
+
+.TitleItem:hover{
+  border: 0.1rem solid var(--SY);
+  border-radius: 1rem;
+}
+
+.TitleItem:hover .TitleDescription{
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.TitleDescription{
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  top: calc(100% + 0.25rem);
+  position: absolute;
+  background-color: var(--BB);
+  max-width: 90%;
+  min-height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--SY);
+  transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+  text-align: center;
+  padding: 0.5rem;
+  transform: translateY(-1rem);
+  background: linear-gradient(0deg, var(--SBB), var(--B));
+  box-sizing: border-box;
+}
+
+.PECWIDescription{
+  letter-spacing: 0.25rem;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  top: 0rem;
+  position: absolute;
+  background-color: var(--BB);
+  min-width: 40%;
+  /* min-height: 4rem; */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  border-radius:  0 0 500% 500%;
+  /* border: 0.1rem solid var(--SY); */
+  text-align: center;
+  padding: 0.25rem;
+  transform: translateY(-2.5rem);
+  /* background: linear-gradient(0deg, var(--SBB), var(--B)); */
+  box-sizing: border-box;
+  transition: 0.25s all cubic-bezier(0.075, 0.82, 0.5, 1) ;
+}
+
+.PECWItem:hover .PECWIDescription{
+  opacity: 1;
+  transform: translateY(0rem);
+}

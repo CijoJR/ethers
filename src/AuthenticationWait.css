@@ -1,0 +1,62 @@
+.AWWrapper{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgba(5, 5, 5, 0.8);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    overflow: hidden;
+
+}
+
+.AWCenter{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.AWWrapper H2{
+    font-family: 'Coco';
+    font-size: 2rem;
+    /* width: 20rem; */
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.AWWrapper H3{
+    font-size: 0.9rem;
+    display: flex;
+    letter-spacing: 0.2rem;
+    justify-self: center;
+    color: var(--SY);
+    margin-bottom: 2.5rem;
+}
+
+.AWWrapper p{
+    font-size: 0.8rem;
+    width: 100%;
+    letter-spacing: 0.15rem;
+    /* bottom: 2.55vh; */
+    /* position: absolute; */
+    text-align: center;
+    /* background-color: var(--BB); */
+    z-index: 1;
+    margin-bottom: 1rem;
+}
+
+.AWWrapper a{
+    /* text-decoration: none; */
+    color: var(--SY);
+    cursor: none;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.AWWrapper a:hover{
+    color: var(--SB);
+}

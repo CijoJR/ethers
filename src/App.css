@@ -1,13 +1,76 @@
 :root {
-    padding: 0;
-    margin: 0;
-    scrollbar-width: none;
-    cursor: none;
-  }
+  padding: 0;
+  margin: 0;
+  scrollbar-width: none;
+  cursor: none;
+  /* scroll-behavior: smooth; */
+}
 
-.AppWrapper{
+.AppWrapper {
   display: flex;
   flex-direction: column;
-  margin:0;
+  margin: 0;
   width: 100%;
+  align-items: center;
+}
+
+.PageTransitionPart {
+  position: absolute;
+  z-index: 100;
+  /* opacity: 0.2; */
+  /* backdrop-filter: blur(2rem); */
+}
+
+.PageTransitionUpper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: var(--BB);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(50% - 2.5rem),
+    calc(100% - 50%) calc(50% - 2.5rem),
+    calc(100% - 50% - 5rem) 50%,
+    0 50%
+  );
+}
+
+.PageTransitionBottom {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: var(--BB);
+  bottom: 0;
+  clip-path: polygon(
+    0 50%,
+    calc(50% - 5rem) 50%,
+    50% calc(50% - 2.5rem),
+    100% calc(50% - 2.5rem),
+    100% 100%,
+    0 100%
+  );
+  /* mix-blend-mode: multiply; */
+
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.PageTransitionBottom img {
+  /* filter: brightness(3); */
+  /* mix-blend-mode: difference; */
+  position: absolute;
+  width: 100%;
+  right: -15%;
+  bottom: -70%;
+  transform: scale(-1,1);
+  /* /* opacity:0 */
+}
+
+.PageTransitionUpper img{
+  height: 100%;
+  top: -10%;
+  left: -20%;
+  position: absolute;
 }

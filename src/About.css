@@ -1,0 +1,70 @@
+.AboutWrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--B);
+  color: var(--Base);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.AboutGapper {
+  min-height: 5rem;
+  width: 100%;
+}
+
+.AboutTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  width: 50%;
+  height: 100vh;
+  padding: 0rem 2rem;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.AboutTextContainerLast {
+  margin-bottom: 10rem;
+}
+
+/* .AboutTextContainer::-webkit-scrollbar {
+    width: 0.5rem;
+    max-width: 5vw;
+    background-color: var(--BB);
+  }
+
+.AboutTextContainer::-webkit-scrollbar-thumb {
+    background-color: var(--SB);
+} */
+
+.AboutTitle {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Coco";
+}
+
+.AboutDescription {
+  text-align: justify;
+  font-size: 0.75rem;
+  width: 25rem;
+  max-width: 100%;
+  color: var(--SG);
+}
+
+.AboutImageContainer {
+  max-width: 100%;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+}
+
+.AboutImageContainer img {
+  height: 100%;
+}

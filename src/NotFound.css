@@ -1,0 +1,19 @@
+.NFW{
+    width:100vw;
+    height:100vh;
+    background-color: var(--B);
+    color: var(--Base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.NFW h1{
+    font-size: 4rem;
+}
+
+.NFW p{
+    letter-spacing: 0.25rem;
+}

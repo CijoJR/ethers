@@ -1,5 +1,7 @@
 :root {
-  --B: #031c21;
+  --B: #01080a;
+  --BB: #101010;
+  --SBB: #3c3e60;
   --DB: #050063;
   --SB: #48acf0;
   --SY: #f3ce56;
@@ -8,9 +10,23 @@
   --SG: #9ebbd7;
   --Base: rgb(254, 254, 252);
   background-color:var(--Base);
-  scroll-snap-type: y proximity;
 
 }
+
+/* :root {
+  --B: #01080a;
+  --BB: #101010;
+  --SBB: #3c3e60;
+  --DB: #050063;
+  --SB: #33a0e9;
+  --SY: #e8be31;
+  --SR: #e63925;
+  --SP: #e9338e;
+  --SG: #9ebbd7;
+  --Base: rgb(254, 254, 252);
+  background-color:var(--Base);
+
+} */
 
 * {
   font-family:"Eagle Lake", 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -19,10 +35,10 @@
   margin: 0;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Coco';
   src: url('./assets/Coco-Bold.otf');
-}
+} */
 
 h1{
   font-family: 'Coco';
