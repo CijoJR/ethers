@@ -25,7 +25,7 @@ function Notification({ id, message, writter, title, deleteTop }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="15"
-          height="25"
+          height="22"
           fill="currentColor"
           viewBox="0 0 16 16"
         >
@@ -38,10 +38,10 @@ function Notification({ id, message, writter, title, deleteTop }) {
         <div className="NotificationMessage">{message}</div>
       </div>
       <div className="NotificationGlow"> </div>
-      <img
+      {/* <img
         src="https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/images/avatars/thumbnail/1280"
         alt=""
-      />
+      /> */}
     </motion.div>
   );
 }
@@ -61,7 +61,14 @@ const NotificationWrapper = forwardRef((props, ref) => {
     },
   }));
 
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    // {
+    //   id: Date.now(),
+    //   message: "Your Login attempt has failed.",
+    //   writter: "EVE",
+    //   title:  "://MECHA #1280",
+    // }
+  ]);
 
   // Remove oldest message every 3 seconds if there are messages
   const deleteTop = (id) => {

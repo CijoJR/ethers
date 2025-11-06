@@ -1,13 +1,19 @@
 .AboutWrapper {
-  width: 100vw;
+  width: 100%;
+  min-height: 100vh;
   height: 100vh;
-  background-color: var(--B);
+  background: linear-gradient(var(--SB)0%,var(--SG)20%,var(--B)80%);
   color: var(--Base);
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  position: relative;
+  /* overflow:auto; */
+  /* padding: 5rem 0; */
+  box-sizing: border-box;
 }
+
 
 .AboutGapper {
   min-height: 5rem;
@@ -15,15 +21,25 @@
 }
 
 .AboutTextContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* background-color: black; */
+  grid-template-columns: 1fr 1fr 1fr;
+  /* max-width: 75rem; */
+  margin-right: 1rem;
+  max-height: 90%;
+  /* grid-template-rows: 1fr 1fr ; */
   justify-content: start;
   align-items: end;
-  width: 50%;
-  height: 100vh;
-  padding: 0rem 2rem;
-  overflow: scroll;
+  width: 90%;
+  height: 70%;
+
+  /* height: 30rem; */
+  /* padding: 0rem 2rem; */
+  /* overflow: scroll; */
   scrollbar-width: none;
+  gap: 0.25rem;
+  /* margin-top: 7.5rem; */
+  z-index: 1;
 }
 
 .AboutTextContainerLast {
@@ -48,23 +64,296 @@
 
 .AboutDescription {
   text-align: justify;
-  font-size: 0.75rem;
-  width: 25rem;
+  font-size: 0.85rem;
   max-width: 100%;
   color: var(--SG);
 }
 
 .AboutImageContainer {
-  max-width: 100%;
-  width: 50%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   justify-content: start;
   align-items: end;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
 }
 
 .AboutImageContainer img {
+  height: 125%;
+  top: -25%;
+  right: -17.5%;
+  position: absolute;
+  transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  filter: blur(1rem);
+  mix-blend-mode: multiply;
+}
+
+.AboutImageContainerC {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(0deg, transparent 20%, var(--SG));
+  mix-blend-mode: color;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.AboutTitleAbout {
+  grid-column: span 2;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.AboutTitleAbout .AboutTitle {
+  text-align: left;
+  margin-left: 1rem;
+  font-size: 6rem;
+}
+
+.AboutGItem {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: solid 0.1rem var(--SBB);
+  border-radius: 1rem;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(1rem);
+
+  /* transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+  /* backdrop-filter: blur(1rem); */
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, calc(100% - 20rem) 100% , calc(100% - 22.5rem) 90%, 0 90%); */
+}
+
+/* .AboutGItem:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), var(--SB));
+
+} */
+.AboutGItem:hover .AboutDescription {
+  color: var(--Base);
+}
+.AboutTitleAbout {
+  background: radial-gradient(rgba(0, 0, 0, 0.75), var(--SBB) 150%);
+  background-size: 200% 200%;
+  background-position: 100% 100%;
+}
+
+.AboutTitleAbout .AboutDescription {
+  color: var(--Base);
+}
+
+.AboutContainer {
+  /* position: absolute; */
+  /* height: 40%; */
+  min-height: 10rem;
+  width: 3rem;
+  /* left: 1rem; */
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+  box-sizing: border-box;
+  border-radius: 2.5rem;
+  /* background-color: bisque; */
+}
+
+.AboutContainerPager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+  width: 3rem;
+
   height: 100%;
 }
+
+.ACDots {
+  min-height: 1rem;
+  min-width: 1rem;
+  background-color: var(--Base);
+  opacity: 0.25;
+  rotate: 45deg;
+}
+
+.ACDotsActive {
+  opacity: 1;
+  background-color: var(--Base);
+}
+
+.AboutButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.Page1Container {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 50rem;
+  width: 60%;
+  height: 100%;
+  min-width: 30%;
+  justify-content: end;
+  z-index: 1;
+  padding-bottom: 15%;
+}
+.Page1Container h1 {
+  font-weight:  normal;
+  font-size: 5rem;
+  letter-spacing: 0.75rem;
+  font-family: "Coco";
+}
+
+.FAQContainer {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 30%;
+  justify-content: start;
+  padding-top: 5rem;
+  padding-right: 2rem;
+  z-index: 2;
+  gap: 1rem;
+  box-sizing: border-box;
+  /* position: relative; */
+  /* background-color: aquamarine; */
+}
+
+.FAQContainer h1 {
+  font-weight: normal;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  font-family: "Coco";
+}
+
+.FAQItem {
+  background: radial-gradient(rgba(0, 0, 0, 0.5));
+  background-size: 200% 200%;
+  background-position: 100% 100%;
+  border: solid 0.1rem var(--B);
+  border-radius: 0.5rem;
+  max-width: 50rem;
+  width: 100%;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) all;
+  /* animation: infinite 10s movegradient cubic-bezier(0.95, 0.05, 0.795, 0.035); */
+}
+
+@keyframes movegradient {
+  0%,
+  100% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 200% 100%;
+  }
+}
+
+.FAQTitle {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.25), black);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-family: "Coco";
+  letter-spacing: 0.1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.FAQBody {
+  /* background-color: var(--); */
+  /* min-height: 5rem;
+  height: 5rem;
+  padding: 1rem 1.5rem; */
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.FAQBody p {
+  padding: 1rem 1.5rem;
+}
+
+.FAQBodyDots {
+  mask-image: url("src/assets/Higuen Elegant Serif (1).png");
+  height: 100%;
+  width: 100%;
+  background-color: var(--B);
+  position: absolute;
+  mask-size: 50rem;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  mask-repeat: repeat-x;
+}
+
+.AboutDots {
+  position: absolute;
+  mask-image: url("src/assets/Higuen Elegant Serif (1).png");
+  height: 50%;
+  width: 100%;
+  background: linear-gradient(transparent 45%, var(--SP) , var(--B));
+  mask-repeat: repeat-x;
+  mask-size: 50rem;
+  top: 0;
+  left: 0;
+  mask-position: 0 100%;
+  pointer-events: none;
+  scale: 1 -1;
+}
+
+.FAQTarrow{
+  position: absolute;
+  right: 1.5rem;
+}
+
+.FAQWrapper{
+  position: absolute;
+  top:0;
+  /* background-color: aqua; */
+  height: 100%;
+  overflow-y: scroll;
+  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50%;
+  padding-top: 12rem;
+  box-sizing: border-box;
+  z-index: -1;
+  scrollbar-width: none;
+  mask-image: linear-gradient(transparent 7.5rem,transparent 10rem, black 12.5rem);
+}
+
+
+
+
+
+
+

@@ -47,10 +47,10 @@
 .FooterMotto {
   width: 100vw;
   position: absolute;
-  font-size: 0.5rem;
+  font-size: 1rem;
   color: var(--Base);
   opacity: 80%;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.65rem;
   text-shadow: 0rem 0.1rem 0.25rem var(--SB);
   bottom: 2rem;
   left: 2.5rem;

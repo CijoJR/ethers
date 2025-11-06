@@ -79,6 +79,8 @@ export default function Login({ sendNotif, setUser, delayNav }) {
       <AnimatePresence>
         {fetching && <AuthenticationWait text1="Checking Credentials" text2="Succesfully Logged In" setChecking={setFetching} registered={loggedIn}/>}
       </AnimatePresence>
+      <img className='LoginHeroImage' src="./src/assets/AUTH_HERO.webp" alt="" />
+      <img className='LoginHeroImageBG' src="./src/assets/AUTH_HERO.webp" alt="" />
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{
@@ -155,7 +157,7 @@ export default function Login({ sendNotif, setUser, delayNav }) {
           />
         </form>
       </motion.div>
-      <IdleAnimation s="2.5s" color="var(--SBB)" />
+      <IdleAnimation s="2.5s" color="var(--SB)" />
     </div>
   );
 }

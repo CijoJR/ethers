@@ -29,7 +29,7 @@ export default function Masonry() {
       </svg>
 
       {/* Grid content */}
-      <div className="masonry fisheye">
+      {/* <div className="masonry fisheye">
         <div className="masonry-item">Card 1</div>
         <div className="masonry-item">
           Card 2<br />taller
@@ -42,7 +42,7 @@ export default function Masonry() {
         <div className="masonry-item">
           Card 6<br />glitchy
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

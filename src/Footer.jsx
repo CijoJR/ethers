@@ -19,12 +19,14 @@ import React from "react";
             <div className="FRTLeft">
               <div className="H"> DIRECTORY </div>
               <p> Home </p>
+              <p> Profile </p>
               <p> Roadmap </p>
               <p> Gallery </p>
               <p> About </p>
             </div>
             <div className="FRTRight">
               <div className="H"> SOCIALS </div>
+              <p> Ether.site </p>
               <p> X/Twitter </p>
               <p> Discord </p>
               <p> Instagram </p>

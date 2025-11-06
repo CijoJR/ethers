@@ -47,9 +47,19 @@ export default function HomeExtend() {
             : { visibility: "visible" }
         }
       >
-        <img src="./src/assets/HE1.png" alt="" />
-        <IdleAnimation h="120vh" s="4s" color="var(--SB)" />
+        {/* <img src="./src/assets/HE_HERO2.webp" alt="" /> */}
+        {/* <IdleAnimation h="120vh" s="4s" color="var(--SB)" /> */}
         <motion.div className="Sec Sec1" ref={sec1Ref}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="var(--Base)"
+            viewBox="0 0 16 16"
+          >
+            <path d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+            <path d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+          </svg>
           <motion.h2
             initial={{ y: 100, opacity: 0 }}
             animate={
@@ -180,22 +190,34 @@ export default function HomeExtend() {
       </div>
       <div className="SecGapper"></div>
       <div className="SecWrapper SecWrapper2">
-        {/* <img src="./src/assets/HE1.png" alt="" /> */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="var(--Base)"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-            />
-            <path
-              d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-            />
-          </svg>
+        <div className="Sec2Dots" />
+        {/* <div className="herosec2wrapper">
+          <motion.img
+            initial={{ filter: "blur(2rem)", transform: "scale(1.2)" }}
+            whileInView={{
+              filter: "none",
+              transform: "scale(1)",
+              transition: {
+                duration: 0.5,
+                // ease: [0, 0.25, 0.5, 1],
+              },
+            }}
+            exit={{
+              filter: "blur(2rem) grayscale(1.2)",
+              transform: "scale(2)",
+              transition: {
+                duration: 0.5,
+                // ease: [0, 0.25, 0.5, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.8 }}
+            src="./src/assets/HE_HERO2.webp"
+            alt=""
+          />
+        </div> */}
         <motion.div className="Sec Sec2" ref={sec2Ref}>
+          {/* <img className="HE2BImg" src="./src/assets/HE_HERO2.png" alt="" /> */}
+
           <motion.h2
             initial={{ x: -200, opacity: 0 }}
             animate={
@@ -268,8 +290,9 @@ export default function HomeExtend() {
               transition: { duration: 0, delay: 0 },
             }}
           >
-            <i>"All of them looks pretty." </i>
-            -Valens, Vamp
+            <i>&quot;All of them looks pretty. Some of them are red.&quot; </i>
+            <br />
+            -Ichika, Oni Guide
           </motion.p>
           <motion.div
             className="BWrapper ClickableOn"
@@ -309,7 +332,35 @@ export default function HomeExtend() {
         </motion.div>
       </div>
       <div className="SecWrapper SecWrapper3">
+          <div className="Sec3Dots" />
         <motion.div className="Sec Sec3" ref={sec3Ref}>
+          {/* <div className="Sec3Shaper"/> */}
+          {/* <motion.img
+            initial={{
+              // opacity: 0,
+              filter: "blur(1rem)",
+            }}
+            whileInView={{
+              // x: 0,
+              // opacity: 1,
+              filter: "none",
+            }}
+            exit={{
+              // opacity: 0,
+              filter: "blur(1rem)",
+              // transition: { duration: 0, delay: 0.5 },
+            }}
+            transition={{
+              delay: 0,
+              duration: 1,
+              // ease: [0, 0.25, 0.5, 1],
+            }}
+            src="./src/assets/HE_HERO1.webp"
+            alt=""
+            viewport={{ once: false, amount: 0.8 }}
+          /> */}
+
+          {/* <img className="HEBImg" src="./src/assets/HE_HERO1.webp" alt="" /> */}
           <motion.h2
             initial={{ x: 200, opacity: 0 }}
             animate={
@@ -385,8 +436,9 @@ export default function HomeExtend() {
               transition: { duration: 0, delay: 0 },
             }}
           >
-            <i>"All of them looks pretty." </i>
-            -Valens, Vamp
+            <i>&quot;I've met a lot of interesting people over the past century.&quot; </i>
+            <br />
+            -Dante, Corrupted Vampire
           </motion.p>
           <motion.div
             className="BWrapper2"
@@ -502,8 +554,9 @@ export default function HomeExtend() {
               transition: { duration: 0, delay: 0 },
             }}
           >
-            <i>"All of them looks pretty." </i>
-            -Valens, Vamp
+           <i>&quot;We've got a plan don't you worry!&quot; </i>
+            <br />
+            -Chitose, Website Developer
           </motion.p>
           <motion.div
             className="BWrapper ClickableOn"

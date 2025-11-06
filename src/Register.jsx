@@ -97,6 +97,9 @@ export default function Register({ sendNotif, setUser, delayNav }) {
         ) : null}
       </AnimatePresence>
 
+      <img className='LoginHeroImage' src="./src/assets/AUTH_HERO.webp" alt="" />
+      <img className='LoginHeroImageBG' src="./src/assets/AUTH_HERO.webp" alt="" />
+
       <motion.div
         className="LWZ"
         initial={{ y: 100, opacity: 0 }}
@@ -218,7 +221,7 @@ export default function Register({ sendNotif, setUser, delayNav }) {
           />
         </form>
       </motion.div>
-      <IdleAnimation s="2.5s" color="var(--SBB)" />
+      <IdleAnimation s="2.5s" color="var(--SY)" />
     </div>
   );
 }

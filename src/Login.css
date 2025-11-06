@@ -13,6 +13,29 @@
 
 }
 
+.LoginHeroImage{
+  position: absolute;
+  bottom: 0;
+  right: 12.5vw;
+  z-index: 1;
+  min-height: 90%;
+  height: 95%;
+}
+
+.LoginHeroImageBG{
+  position: absolute;
+  /* bottom: 0; */
+  top:0;
+  right: -5rem;
+  z-index: 0;
+  min-height: 120%;
+  height: 140%;
+  backdrop-filter: blur(1rem);
+  filter: blur(2rem);
+  opacity: 0.5;
+  mix-blend-mode:screen;
+}
+
 .LWZ{
   z-index: 1;
 }
@@ -45,20 +68,21 @@
   box-shadow: 0 0 1rem var(--SB);
   */
   /* min-height: 50vh; */
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   min-width: 25rem;
   width: 40rem;
   max-width: 80vw;
   padding: 3rem 2rem 5rem 2rem;
-  backdrop-filter: blur(1rem);
-  background: rgba(1, 1, 1, 0.25);
-  /* box-shadow: 0 0 3rem 0.25rem var(--SB); */
+  backdrop-filter: blur(0.2rem);
+  background: rgba(0, 0, 0, 0.35);
+  /* box-shadow: 0 0 0.5rem 0.1rem var(--SBB); */
   /* background-blend-mode: difference; */
   /* background: var(--B); */
   /* background: linear-gradient(360deg,var(--SG)-20%, var(--B)30%, var(--BB)); */
-  margin-left: 10%;
+  margin-left: 5rem;
+  /* margin-top: 25rem; */
   z-index: 1;
-  /* border: solid 0.01rem var(--BB); */
+  /* border: solid 0.01rem var(--SB); */
 }
 
 .FLabel {
@@ -109,7 +133,7 @@
   color: var(--Base);
   text-decoration: underline;
   letter-spacing: 0.2rem;
-  transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.25s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: none;
   font-size: 0.75rem;
   padding-left: 1rem;
@@ -130,7 +154,7 @@
   background-color: transparent;
   /* box-shadow: 0 0  2rem 0.25rem var(--SB); */
   color: var(--Base);
-  transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.5s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   align-self: end;
   justify-self: end;
   display: flex;

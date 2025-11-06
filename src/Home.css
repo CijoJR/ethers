@@ -29,24 +29,26 @@
 
 .HomeSection > .HomeHeader > .HomeTitle {
   position: absolute;
-  color: var(--SBB);
-  font-size: 4rem;
+  color: var(--Base);
+  font-size: 3rem;
   min-width: 100%;
   text-align: center;
-  z-index: -1;
-  mix-blend-mode: difference;
-  bottom: 2.5rem;
+  z-index: 1;
+  mix-blend-mode: hard-light;
+  text-shadow: 0rem 0rem 0.5rem var(--SB);
+  bottom: 5.5rem;
   /* background-color: aqua; */
 }
 
 .HomeSection > .HomeHeader > .HomeTitle p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   min-width: 100vw;
-  z-index: -1;
+  z-index: 1;
   /* mix-blend-mode: difference; */
-  letter-spacing: 1rem;
-  margin-bottom: -2rem;
+  letter-spacing: 0.8rem;
+  margin-bottom: -1.25rem;
   /* background-color: azure; */
+  margin-top: -2rem;
 }
 
 .HomeSection > .HomeHeader > .NavigationWrapper {
@@ -54,14 +56,14 @@
   flex-direction: row;
   justify-content: center;
   /* margin-top: 1.5rem; */
-  padding: 0.8rem 4rem 0.8rem 4rem;
+  padding: 0.5rem 4rem 0.7rem 4rem;
   border-radius: 0rem 0rem 5rem 5rem ;
   justify-content: space-between;
   /* background-color: aqua; */
   background-color: var(--BB);
   width: 25rem;
-  mix-blend-mode: darken;
-  border: 0.1rem solid var(--SG);
+  /* mix-blend-mode: darken; */
+  /* border: 0.1rem solid var(--SG); */
   border-top: none;
 }
 
@@ -70,11 +72,11 @@
   background: none;
   padding: 0;
   color: var(--SG);
+  text-shadow: 0rem 0rem 0.5rem var(--SB);
   cursor: none;
   text-decoration: none;
   letter-spacing: 0.25rem;
   transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  text-shadow: 0rem 0rem 0.5rem var(--SB);
   font-size: 0.75rem;
   /* background-color: aliceblue; */
 }
@@ -85,11 +87,15 @@
 
 .HomeSection > .BgVideo {
   position: absolute;
-  top: -10%;
-  min-width: 120%;
-  min-height: 120%;
+  top: 50%;
+  translate: 0 -50%;
+  min-width: 110%;
+  min-height: 110%;
+  height: 110%;
+  object-fit: cover;
   z-index: -1;
   transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: blur(1rem);
 }
 
 @keyframes idleEtherEnter {
@@ -98,42 +104,70 @@
   100%{letter-spacing: 1rem;}
 }
 
-.HomeSection > .EnterButton svg{
+.HomeSection > svg{
   position: absolute;
-  bottom: 0;
+  bottom: 0.25rem;
+  /* stroke-width: 5rem; */
+  /* stroke: var(--B); */
 }
 
 .HomeSection > .EnterButton {
   background-color: var(--BB);
-  mix-blend-mode: darken;
+  /* mix-blend-mode: darken; */
   /* backdrop-filter: blur(1rem); */
   border-style: none;
-  color: var(--SG);
+  color: var(--Base);
+  background-image: url('https://pbs.twimg.com/media/FuFDpu-aUAAR4_M?format=png&name=small');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  background:rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(1rem);
+  text-shadow: 0rem 0rem 0.5rem var(--SB);
   letter-spacing: 0.25rem;
   position: absolute;
-  width: 22.5rem;
-  /* box-shadow: 0rem 0rem 0.5rem var(--SB); */
+  width: 30rem;
+  /* box-shadow: 0rem 0rem 0.2rem 0.1rem var(--BB); */
+  /* border: 1px solid var(--Base); */
   /* text-shadow: 0rem 0rem 0.5rem var(--SB); */
-  height: 3rem;
-  border-radius: 2rem 2rem 0rem 0rem;
-  bottom: 0rem;
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1) 1s;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  bottom: 1.5rem;
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.25s;
   cursor: none;
   font-size: 1rem;
-  border: 0.1rem solid var(--SG);
-  border-bottom: none;
+  /* border-bottom: none; */
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
   /* gap: 1rem; */
   /* background-color: aqua; */
+}
+.HomeSection > .EnterButton p{
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  opacity: 0.5;
+}
+.HomeSection > .EnterButton:hover p{
+  transform: translateY(7rem);
+}
+
+.HomeSection > .EnterButton:hover svg{
+  display: none;
 }
 
 .HomeSection > .EnterButton:hover {
   letter-spacing: 0.5rem;
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+  /* transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s; */
+  height: 30rem;
+  width: 30rem;
+  border-radius: 15rem 15rem 0 0;
+  bottom:-5rem;
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+
 
 }
 
@@ -157,4 +191,74 @@
 
 .HomeSection > .EnterButton:hover > .IAHWrapper {
   opacity: 1;
+}
+
+.BottomWrapper{
+  /* position: absolute; */
+  /* display: flex; */
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0%, -50%);
+  /* justify-self: center;
+  align-self: center; */
+  right: 0;
+  height: 10rem;
+  width: 1.5rem;
+  border-radius: 5rem 0 0 5rem;
+  background-color: var(--B);
+  
+}
+
+.TweetWrapper{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 10%;
+  left: 1rem;
+  /* transform: translate(0%, -50%); */
+  height: 10rem;
+  width: 20rem;
+}
+
+.HomeLine{
+ position: absolute;
+ box-shadow: 0rem 0rem 0.5rem var(--SB);
+ border: 1px solid var(--Base);
+ height: calc(100% - 6rem);
+ width:  calc(100% - 2rem);
+ margin: 2.5rem 1rem;
+ bottom: 0;
+ /* translate: 0 -50%; */
+ border-radius: 0.5rem;
+ z-index: -1;
+}
+
+.HomeAni{
+  position: absolute;
+ height: 100%;
+ width:  100%;
+ bottom: 0;
+ /* translate: 0 -50%; */
+ z-index: -1;
+ background: radial-gradient(transparent 60%, var(--SB), var(--Base));
+ mask-image: url('./assets/Higuen Elegant Serif (1).png');
+ mask-repeat: repeat-x;
+ mask-position: 0 100%;
+ mask-size: 50rem ;
+ opacity: 0.5;
+}
+
+#Homemask{
+  position: absolute;
+  height: 100%;
+  width:  100%;
+  bottom: 0;
+  /* translate: 0 -50%; */
+  z-index: -1;
+  background: radial-gradient(transparent 60%, var(--SB), var(--Base));
+  mask-image: url('./assets/Higuen Elegant Serif (1).png');
+  mask-repeat: no-repeat;
+  mask-position: 0 100%;
+  mask-size: 100% ;
+  opacity: 0.5;
 }

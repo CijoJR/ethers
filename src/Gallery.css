@@ -57,9 +57,11 @@
 }
 
 .GalleryPage > .GalleryHeader > h1 {
-  width: 100vw;
+  font-weight: normal;
   font-size: 3rem;
+  font-family: "Coco";
   text-align: center;
+  letter-spacing: 1rem;
 }
 
 .GalleryPage > .GalleryHeader > p {
@@ -73,11 +75,13 @@
 }
 .GalleryBGimg {
   height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
   top:0;
   object-fit: cover;
   position: fixed;
   z-index: 0;
-  animation: sway 60s infinite;
+  /* animation: sway 60s infinite; */
   display: flex;
   justify-self: center;
   align-self: center;
@@ -117,8 +121,9 @@
 
 .GapperDivBottom {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 15rem;
+  /* margin-top: -1rem; */
+  width: 100%;
+  height: 7.5rem;
   letter-spacing: 1rem;
   font-size: xx-small;
   text-shadow: 0rem 0rem 0.25rem var(--Base);
@@ -150,6 +155,7 @@
   /* align-items: center; */
   padding: 0.25rem 0 0 0 ;
   width: auto;
+  padding-bottom: 13rem;
   /* display:; */
   /* grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); */
   /* align-items: start;
@@ -157,7 +163,7 @@
   /* align-items: start; */
   /* justify-content: center; */
   /* gap: 0.5rem; */
-  background-color: var(--B);
+  /* background-color: var(--B); */
   min-height: 100vh;
   width: 100vw;
   /* border-radius: 2rem 2rem 0rem 0rem; */
@@ -165,7 +171,8 @@
   color: aliceblue;
   transition: 2s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(0.5rem);
   /* z-index: 2; */
   position: relative;
 }
@@ -594,7 +601,7 @@
 }
 
 .GalleryButtons {
-  margin-top: -3rem;
+  margin-top: -12rem;
   bottom: 2.5rem;
   position: sticky;
   height: 3rem;

@@ -40,7 +40,7 @@ export default function Gallery({ sendNotif }) {
     if (targetRef.current) {
       const targetHeight = targetRef.current.offsetHeight;
       const triggerPoint = targetHeight;
-      setIsPastTarget(latest >= triggerPoint-705);
+      setIsPastTarget(latest >= triggerPoint-(window.innerHeight-450));
     }
   });
   useEffect(() => {
@@ -109,10 +109,10 @@ export default function Gallery({ sendNotif }) {
           className="ProgressBarHE"
         />
       </div>
-
+      
       {/* Background */}
       <motion.img
-        src="https://pbs.twimg.com/media/Gvaa5bPWQAAgePH?format=jpg&name=4096x4096"
+        src="../src/assets/ASDAC.png"
         alt=""
         className="GalleryBGimg"
         animate={{ opacity: 1 }}

@@ -9,7 +9,7 @@
   --SP: #ff6cb5;
   --SG: #9ebbd7;
   --Base: rgb(254, 254, 252);
-  background-color:var(--Base);
+  /* background-color:var(--Base); */
 
 }
 
@@ -28,17 +28,35 @@
 
 } */
 
+img {
+  filter: blur(5rem); 
+}
+
+html {
+  font-size: 13px;
+}
+
 * {
-  font-family:"Eagle Lake", 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family:"Mulish","Eagle Lake", 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-style: normal;
   padding: 0;
   margin: 0;
 }
 
-/* @font-face {
+@font-face {
   font-family: 'Coco';
-  src: url('./assets/Coco-Bold.otf');
-} */
+  src: url('./src/assets/PlayfairDisplaySC-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Coco';
+  src: url('./src/assets/Cinzel-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  src: url('./src/assets/Mulish-VariableFont_wght.ttf');
+}
 
 h1{
   font-family: 'Coco';

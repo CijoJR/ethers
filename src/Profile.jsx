@@ -6,9 +6,15 @@ import React, {
   useCallback,
 } from "react";
 import { WindowScroller, AutoSizer, Grid } from "react-virtualized";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTransform, useMotionValue, animate } from "motion/react";
+import {
+  useTransform,
+  useMotionValue,
+  animate,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
 
 import "./Profile.css";
 
@@ -27,6 +33,7 @@ const throttle = (func, limit) => {
 
 export default function Profile() {
   const [profile, setProfile] = useState(null);
+  const [isPastTarget, setIsPastTarget] = useState(null);
   const [profiles, setProfiles] = useState([]);
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -36,6 +43,16 @@ export default function Profile() {
   const gridRef = useRef(null);
 
   const [showGrid, setShowGrid] = useState(false);
+  const targetRef = useRef(null);
+  const { scrollY } = useScroll(); // scrollY is a MotionValue
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (targetRef.current) {
+      const targetHeight = targetRef.current.offsetHeight;
+      const triggerPoint = targetHeight;
+      setIsPastTarget(latest >= triggerPoint - (window.innerHeight - 450));
+    }
+  });
 
   useEffect(() => {
     if (!slug) {
@@ -71,42 +88,6 @@ export default function Profile() {
   }, [slug]);
 
   useEffect(() => {
-    if (slug != null && profile == null && profiles == undefined) {
-      let isCancelled = false;
-
-      const fetchData = async () => {
-        const path = `https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/users/profile/${slug}`;
-
-        try {
-          const response = await fetch(path, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: "include",
-          });
-
-          const data = await response.json();
-
-          if (!isCancelled) {
-            setProfile(data.data);
-          }
-        } catch (err) {
-          if (!isCancelled) {
-            console.error("Failed to fetch profiles:", err);
-          }
-        }
-      };
-
-      fetchData();
-
-      return () => {
-        isCancelled = true;
-      };
-    }
-  }, [slug]);
-
-  useEffect(() => {
     let isCancelled = false;
 
     const fetchData = async () => {
@@ -126,6 +107,7 @@ export default function Profile() {
 
         if (!isCancelled) {
           setProfiles(data.data);
+          console.log("PData: ", data.data);
         }
       } catch (err) {
         if (!isCancelled) {
@@ -147,9 +129,13 @@ export default function Profile() {
   }, [slug]);
 
   const handleClick = useCallback(
-    (profileName) => {
+    (profileName, profileid) => {
       setProfile(profileName);
-      navigate(`/Profile/${profileName}`);
+      if(profileid != -1){
+        navigate(`/Profile/${profileName}`);
+      }else{
+        navigate(`/Profile/wallet/${profileName}`);
+      }
     },
     [navigate]
   );
@@ -158,12 +144,13 @@ export default function Profile() {
     <AnimatePresence>
       {profile != null || slug != undefined ? (
         <SpecificProfile
-          setProfile={setProfile}
-          user={profiles?.find((user) => user.username === profile) ?? {}}
+          user={profile}
           navigate={navigate}
+          setProfile={setProfile}
         />
       ) : (
         <motion.div
+          ref={targetRef}
           className="ProfileSelectorWrapper"
           key="state2"
           initial={{ opacity: 0 }}
@@ -181,6 +168,16 @@ export default function Profile() {
             },
           }}
         >
+          <img
+            style={{
+              opacity: profiles.length == 0 ? 1 : 1,
+              zIndex: isPastTarget == true ? -1 : 0,
+            }}
+            className="BGPSW"
+            // src="https://pbs.twimg.com/media/G1SPX1QbQAIs0LA?format=jpg&name=large"
+            src="../src/assets/uhfvggvuvu.png"
+            alt=""
+          />
           <motion.div
             className="P100"
             initial={{ y: 100, opacity: 0 }}
@@ -191,7 +188,7 @@ export default function Profile() {
               ease: [0, 0.71, 0.5, 1],
             }}
           >
-            <h2>Profile Explore</h2>
+            <h1>Profile</h1>
             <p>Select a collector profile to view</p>
           </motion.div>
           {profiles.length == 0 ? (
@@ -306,9 +303,7 @@ export default function Profile() {
                                     }}
                                   >
                                     <ProfileGridItem
-                                      handleClick={() =>
-                                        handleClick(item.username ?? "cee")
-                                      }
+                                      handleClick={handleClick}
                                       index={index}
                                       key={`profile-${item.username || index}`}
                                       ether={item}
@@ -335,7 +330,7 @@ export default function Profile() {
 
 const ProfileGridItem = React.memo(({ ether, handleClick }) => {
   const color = useMemo(() => {
-    const heroColor = ether.ethers?.[0]?.background;
+    const heroColor = ether.profilecolor;
 
     switch (heroColor) {
       case "Pink":
@@ -353,11 +348,11 @@ const ProfileGridItem = React.memo(({ ether, handleClick }) => {
       default:
         return "var(--SG)";
     }
-  }, [ether.ethers]);
+  }, [ether.profilecolor]);
 
   const tokenId = useMemo(() => {
-    return ether.profiletoken ?? ether.ethers?.[0]?.tokenid ?? 0;
-  }, [ether.profiletoken, ether.ethers]);
+    return ether.profiletoken ?? 1999;
+  }, [ether.profiletoken]);
 
   const imageUrl = useMemo(() => {
     return `https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/images/avatars/thumbnail/${tokenId}`;
@@ -374,7 +369,8 @@ const ProfileGridItem = React.memo(({ ether, handleClick }) => {
         delay: 0.1,
       }}
       // viewport={{ amount: 0, once: true }}
-      onClick={handleClick}
+      
+      onClick={()=>handleClick(ether.username ?? "cee", ether.userid ?? -1)}
     >
       <div
         className="PPGP"
@@ -423,7 +419,7 @@ const ProfileGridItem = React.memo(({ ether, handleClick }) => {
       </motion.div>
       <div className="PGIInfo">
         <h3>{ether.username?.slice(0, 5)}</h3>
-        <p>{ether.walletaddress?.slice(0, 5) ?? "Newbie"}</p>
+        <p>{ether.profiletitle ?? "Newbie"}</p>
       </div>
     </motion.div>
   );
@@ -432,16 +428,66 @@ const ProfileGridItem = React.memo(({ ether, handleClick }) => {
 ProfileGridItem.displayName = "ProfileGridItem";
 
 function SpecificProfile({ navigate, user, setProfile }) {
+  console.log('props: ', navigate);
+  console.log('props: ', user);
+  console.log('props: ', setProfile);
+  
+  const [profileData, setProfileData] = useState(null);
+  const location = useLocation().pathname.slice(0,16);
+  console.log('loc: ', location);
+  const path = `https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/users/profile/${location=='/Profile/wallet/'?'wallet/':''}${user}`;
+  console.log('path: ',path);
   const BG = useRef(null);
   const PFP = useRef(null);
 
+
+
+  useEffect(() => {
+    let isCancelled = false;
+    console.log("USER: ", user);
+
+    const fetchData = async () => {
+      const path = `https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/users/profile/${location=='/Profile/wallet/'?'wallet/':''}${user}`;
+      console.log('path: ',path);
+      try {
+        const response = await fetch(path, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        });
+
+        const data = await response.json();
+
+        if (!isCancelled) {
+          setProfileData(data.data[0]);
+          console.log("PData: ", data.data);
+        }
+      } catch (err) {
+        if (!isCancelled) {
+          console.error("Failed to fetch profiles:", err);
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [user, location]);
+
   const tokenId = useMemo(() => {
-    return user.profiletoken ?? user.ethers?.[0]?.tokenid ?? 0;
-  }, [user.profiletoken, user.ethers]);
-  console.log(user);
+    return profileData?.profiletoken ?? profileData?.ethers?.[0]?.tokenid ?? 0;
+  }, [profileData?.profiletoken, profileData?.ethers]);
+  console.log("PDATAHH: ", profileData);
 
   const color = useMemo(() => {
-    const heroColor = user.ethers?.[0]?.background ?? "";
+    const heroColor =
+      profileData?.ethers?.[0] == null
+        ? ""
+        : profileData?.ethers?.[0]?.profilecolor;
 
     switch (heroColor) {
       case "Pink":
@@ -459,7 +505,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
       default:
         return "var(--SG)";
     }
-  }, [user]);
+  }, [profileData]);
 
   const handleExit = () => {
     navigate(`/Profile/`);
@@ -495,7 +541,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
 
   return (
     <AnimatePresence>
-      {Object.keys(user).length === 0 ? (
+      {profileData === null || profileData === undefined ? (
         <motion.div
           className="PLWrapper"
           key="state1"
@@ -519,7 +565,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
             delay: 0.25,
           }}
           onClick={handleExit}
-          >
+        >
           <div className="Profile">
             <div className="ProfileBackButton">
               <svg
@@ -542,6 +588,8 @@ function SpecificProfile({ navigate, user, setProfile }) {
                 borderTop: `${color} 0.1rem solid`,
               }}
             >
+              <div className="PPPDots" />
+
               {/* <img
                 className="PMBG"
                 // src="https://pbs.twimg.com/media/GmUin4ragAAx9uZ?format=jpg&name=large"
@@ -576,6 +624,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
                     background: `linear-gradient(225deg,transparent 35%,${color} 50%,transparent 65%)`,
                   }}
                 /> */}
+
                 <img
                   src={`https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/images/avatars/thumbnail/${tokenId}`}
                   loading="lazy"
@@ -596,7 +645,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
                   }}
                 >
                   <p>ETHER #{tokenId}</p>
-                  <p className="BBT">Howdy Partner!</p>
+                  <p className="BBT">{profileData.profilebio}</p>
                 </div>
                 <div
                   className="ProfileMenuHeaderBG"
@@ -607,13 +656,13 @@ function SpecificProfile({ navigate, user, setProfile }) {
                   }}
                 >
                   <div className="ProfileMenuHeaderID">
-                    <h2>{user?.username.slice(0, 25)}</h2>
+                    <h2>{profileData?.username.slice(0, 25)}</h2>
                     <p
                       style={{
                         color: color == "var(--SBB)" ? "var(--SG)" : color,
                       }}
                     >
-                      Vampire Hunter
+                      {profileData.profiletitle}
                     </p>
                     <p
                       style={{
@@ -621,7 +670,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
                         opacity: 0.5,
                       }}
                     >
-                      {user?.walletaddress}
+                      {profileData.walletaddress}
                     </p>
                   </div>
                   <img
@@ -648,15 +697,27 @@ function SpecificProfile({ navigate, user, setProfile }) {
                   <h2>Collector Ranking</h2>
                 </div>
                 <div className="ProfileStatsItem">
-                  <h3>{user.ethers.length}</h3>
+                  <h3>{profileData.ethers.length}</h3>
                   <h2>Avatars Collected</h2>
                 </div>
                 <div className="ProfileStatsItem">
-                  <h3>0</h3>
+                  <h3>{profileData.badgecount}</h3>
                   <h2>Achievements</h2>
                 </div>
                 <div className="ProfileStatsItem">
-                  <h3>0%</h3>
+                  <h3>
+                    {profileData.traitcount}
+                  </h3>
+                  <h2>Traits Collected</h2>
+                </div>
+                <div className="ProfileStatsItem">
+                  <h3>
+                    {(
+                      (100 * profileData.traitcount) /
+                      profileData.traittotal
+                    ).toFixed(2)}
+                    %
+                  </h3>
                   <h2>Traits Completion</h2>
                 </div>
               </div>
@@ -674,9 +735,9 @@ function SpecificProfile({ navigate, user, setProfile }) {
                     <BadgeItem
                       key={i}
                       c={color == "var(--SBB)" ? "var(--SG)" : color}
-                      link={
-                        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fbec1116-f54d-4716-932f-800f4893b918/d50fme3-6902c223-4cdb-43e1-9e90-b51af27bf7dc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZiZWMxMTE2LWY1NGQtNDcxNi05MzJmLTgwMGY0ODkzYjkxOFwvZDUwZm1lMy02OTAyYzIyMy00Y2RiLTQzZTEtOWU5MC1iNTFhZjI3YmY3ZGMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8RkPh__s1bdV0BI6h5aZCVb9dv69wsqQFjrGlZBO4HM"
-                      }
+                      link={`https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/images/badge/${
+                        i % 10
+                      }`}
                     />
                   ))}
                 </div>
@@ -686,16 +747,18 @@ function SpecificProfile({ navigate, user, setProfile }) {
                   className="ProfileAvatarGridBG"
                   style={{ color: color == "var(--SBB)" ? "var(--SG)" : color }}
                 >
-                  <h2>Avatar Collection</h2>
+                  <h2>{profileData.ethers[0] != null ? 'Avatar Collection' : ''}</h2>
                 </div>
-                {user.ethers.map((avatar, index) => (
-                  <AvatarItem
-                    key={index}
-                    c={color == "var(--SBB)" ? "var(--SG)" : color}
-                    c2={avatar.background}
-                    link={avatar.tokenid}
-                  />
-                ))}
+                {profileData.ethers[0] != null
+                  ? profileData.ethers.map((avatar, index) => (
+                      <AvatarItem
+                        key={index}
+                        c={color == "var(--SBB)" ? "var(--SG)" : color}
+                        c2={avatar.background}
+                        link={avatar.tokenid}
+                      />
+                    ))
+                  : null}
               </div>
               <div className="BehindImage2">
                 <div
@@ -747,7 +810,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
                       className="ProfileName"
                       // style={{ textShadow: `0rem 0rem 2rem ${color}` }}
                     >
-                      {user.username.slice(0, 25)}
+                      {profileData.username.slice(0, 25)}
                     </div>
                     <div
                       style={{
@@ -758,7 +821,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
                       className="Title"
                       // style={{ textShadow: `0 0 2rem ${color}` }}
                     >
-                      Vampire Hunter
+                      {profileData.profiletitle}
                     </div>
                   </div>
                   <div
@@ -781,8 +844,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
                       }}
                     />
                     <div className="AchievementGrid">
-                      Have you heard about the vampire living in the alleys? No?
-                      Well I'm gonna run.
+                      {profileData.profilebio}
                     </div>
                   </div>
 
@@ -809,7 +871,7 @@ function SpecificProfile({ navigate, user, setProfile }) {
   );
 }
 
-export function BadgeItem({ link, c }) {
+export function BadgeItem({ link, c, name, description }) {
   const containerRef = useRef(null);
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
@@ -857,26 +919,31 @@ export function BadgeItem({ link, c }) {
       }}
       // whileHover={{ background : `linear-gradient(var(--BB),${c} 10%, var(--BB))` }}
     >
-      <motion.div
-        className="BadgeItemImage"
-        style={{
-          rotateX,
-          rotateY,
-          translateX: rotateY,
-          translateY: minrotateY,
-          transformStyle: "preserve-3d",
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 40 }}
-      >
-        <img
-          decoding="async"
-          src={`https://3000-idx-ethersbackend-1741062191902.cluster-nx3nmmkbnfe54q3dd4pfbgilpc.cloudworkstations.dev/api/images/badge/BADGE1`}
-          className="HeroImage"
-        />
-      </motion.div>
-      <h3>BETA SPIRIT BADGE</h3>
+      {link == null ? null : (
+        <motion.div
+          className="BadgeItemImage"
+          style={{
+            rotateX,
+            rotateY,
+            translateX: rotateY,
+            translateY: minrotateY,
+            transformStyle: "preserve-3d",
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 40 }}
+        >
+          <img decoding="async" src={link} className="HeroImage" />
+        </motion.div>
+      )}
+      <div className="HeroImageBG">
+        <img decoding="async" src={link} />
+      </div>
+      <h3 style={{ border: `${c} 0.1rem solid` }}>
+        {name && name.length > 0 ? name.toUpperCase() : "BETA SPIRIT BADGE"}
+      </h3>
       <p style={{ border: `${c} 0.1rem solid` }}>
-        This Badge was given to beta testers
+        {description?.length != 0
+          ? description
+          : "This Badge was given to beta testers"}
       </p>
     </motion.div>
   );

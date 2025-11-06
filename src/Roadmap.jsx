@@ -85,7 +85,11 @@ const Roadmap = () => {
 
   return (
     <div className="RoadmapWrapper">
-      <img src="https://pbs.twimg.com/media/Gx6du52aQAAIBER?format=jpg&name=4096x4096" alt="" />
+      <img
+        src="../src/assets/uhfvggvuvu.png"
+        // src="https://pbs.twimg.com/media/GH6A7CrakAAQHrq?format=jpg&name=large"
+        alt=""
+      />
       <div className="RoadmapHeader">
         <div className="RoadmapTitle"> Roadmap </div>
         <div className="RoadmapSubtitle">
@@ -101,11 +105,11 @@ const Roadmap = () => {
                 ref={(el) => (chapterRef.current[index] = el)}
                 key={content.ID}
                 className="RoadmapRailItem"
-                initial={{ y:'100vh'}}
-                animate={{ opacity:1,y: "0"}}
+                initial={{ y: "100vh" }}
+                animate={{ opacity: 1, y: "0" }}
                 transition={{
                   duration: 0.25,
-                  delay: index / 7 * 2 + 1.5,
+                  delay: (index / 7) * 2 + 1.5,
                 }}
               >
                 <div className="RailItemChapter"> Chapter {content.ID} </div>

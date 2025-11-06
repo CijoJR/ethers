@@ -192,6 +192,10 @@ function App() {
           path="/profile/:slug"
           element={<Profile delayNav={delayNav} />}
         />
+        <Route
+          path="/profile/wallet/:slug"
+          element={<Profile delayNav={delayNav} />}
+        />
         <Route path="/about" element={<About delayNav={delayNav} />} />
         {!user ? (
           <>
@@ -216,17 +220,18 @@ function App() {
               }
             />
           </>
-        ) : null}
-        <Route
-          path="/profile/edit"
-          element={
-            <EditProfile
-              delayNav={delayNav}
-              sendNotif={sendNotification}
-              setUser={setUser}
-            />
-          }
-        />
+        ) : (
+          <Route
+            path="/profile/edit"
+            element={
+              <EditProfile
+                delayNav={delayNav}
+                sendNotif={sendNotification}
+                setUser={setUser}
+              />
+            }
+          />
+        )}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
