@@ -4,23 +4,24 @@ import { motion, AnimatePresence } from "motion/react";
 
 import "./App.css";
 
-import Home from "./Home.jsx";
+import Home from "./ETHERED/Home.jsx";
 // import HomeExtend from "./HomeExtend.jsx";
-import Gallery from "./Gallery.jsx";
-import Roadmap from "./Roadmap.jsx";
-import Profile from "./Profile.jsx";
-import About from "./About.jsx";
-import EditProfile from "./EditProfile.jsx";
+import Gallery from "./Ether Menu/Gallery.jsx";
+import Dungeon from "./Ether Menu/Dungeon.jsx";
+import Roadmap from "./The Vision Menu/Roadmap.jsx";
+import Profile from "./Ether Menu/Profile.jsx";
+import About from "./The Vision Menu/About.jsx";
+import EditProfile from "./User/EditProfile.jsx";
 
-import Register from "./Register.jsx";
-import Login from "./Login.jsx";
+import Register from "./User/Register.jsx";
+import Login from "./User/Login.jsx";
 
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import Cursor from "./Cursor.jsx";
-import NotFound from "./NotFound.jsx";
-import NotificationWrapper from "./Notification.jsx";
-import Masonry from "./Masonry.jsx";
+import Header from "./ETHERED/Header.jsx";
+import Footer from "./ETHERED/Footer.jsx";
+import Cursor from "./Components/Cursor.jsx";
+import NotFound from "./ETHERED/NotFound.jsx";
+import NotificationWrapper from "./Components/Notification.jsx";
+import UserSettings from "./User/UserSettings.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -181,13 +182,14 @@ function App() {
       <Header delayNav={delayNav} user={user} logout={logout} />
       <Routes>
         <Route path="/" element={<Home delayNav={delayNav} />} />
+        <Route path="/Dungeon" element={<Dungeon delayNav={delayNav} />} />
         <Route
           path="/gallery"
           element={<Gallery delayNav={delayNav} sendNotif={sendNotification} />}
         />
         <Route path="/Roadmap" element={<Roadmap delayNav={delayNav} />} />
         <Route path="/profile" element={<Profile delayNav={delayNav} />} />
-        <Route path="/M" element={<Masonry delayNav={delayNav} />} />
+        {/* <Route path="/M" element={<Masonry delayNav={delayNav} />} /> */}
         <Route
           path="/profile/:slug"
           element={<Profile delayNav={delayNav} />}
@@ -221,16 +223,22 @@ function App() {
             />
           </>
         ) : (
-          <Route
-            path="/profile/edit"
-            element={
-              <EditProfile
-                delayNav={delayNav}
-                sendNotif={sendNotification}
-                setUser={setUser}
-              />
-            }
-          />
+          <>
+            <Route
+              path={`/profile/edit/${user}`}
+              element={
+                <EditProfile
+                  delayNav={delayNav}
+                  sendNotif={sendNotification}
+                  user={user}
+                />
+              }
+            />
+            <Route
+              path="/settings"
+              element={<UserSettings sendNotif={sendNotification} />}
+            />
+          </>
         )}
         <Route path="*" element={<NotFound />} />
       </Routes>

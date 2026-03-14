@@ -1,0 +1,280 @@
+.DungeonWrapper {
+  /* min-height: 100vh; */
+  /* height: 100vh; */
+  width: 100%;
+  background: var(--B);
+  /* padding: 3rem 0 1rem 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  /* overflow: hidden; */
+  background: url("https://pbs.twimg.com/media/HCHXMyYaQAAxkPR?format=jpg&name=900x900");
+  background: url("../home/user/ethers/src/assets/Untitled (2160 x 1440 px).png");
+  background-size: cover;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  /* gap: 0.5rem; */
+  /* background: rgba(255, 114, 114, 0.5);  */
+}
+
+.DungeonBentoLine {
+  min-width: 100%;
+  height: clamp(10rem, 25vh, 80rem);
+  background: linear-gradient(
+    0deg,
+    rgba(222, 5, 255, 0.25) 0%,
+    transparent 80%
+  );
+  box-sizing: border-box;
+  padding: 1rem;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  gap: 1rem;
+}
+
+.DungeonBento {
+  color: var(--Base);
+  height: 100%;
+  width: clamp(20rem, 25vw, 40rem);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 0.2rem solid rgba(222, 5, 255, 0.25);
+  backdrop-filter: blur(0.5rem);
+}
+.DungeonBento h3 {
+  font-family: "Coco";
+  letter-spacing: 0.1rem;
+}
+.DungeonBentoStarWrapper {
+  display: flex;
+  height: 1.5rem;
+  gap: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  /* background-color: aquamarine; */
+}
+.DungeonBentoStar {
+  background-color: var(--Base);
+  height: 0.7rem;
+  width: 0.7rem;
+  rotate: 45deg;
+}
+.DungeonBentoStar::after {
+  /* background-color: var(--Base); */
+  height: 1rem;
+  width: 1rem;
+  rotate: 45deg;
+  content: "";
+  position: absolute;
+  border: solid 0.1rem var(--Base);
+  top: 0;
+}
+
+.DungeonScreen {
+  width: 100%;
+  min-height: 300rem;
+  /* border: 0.1rem solid rgb(255, 0, 0); */
+  /* position: absolute; */
+  z-index: 1;
+  color: var(--Base);
+  flex-direction: column;
+  display: flex;
+}
+.DungeonScreen h3 {
+  color: var(--Base);
+}
+
+.DungeonController {
+  width: 100%;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  /* min-height: 20rem; */
+  background: rgba(120, 9, 52, 0.75);
+  height: clamp(15rem, 30vh, 100rem);
+  margin-top: calc(-1 * clamp(15rem, 30vh, 100rem));
+  /* border: 0.1rem solid rgb(255, 0, 0); */
+  position: sticky;
+  z-index: 1; 
+  backdrop-filter: blur(1.5rem);
+  color: var(--Base);
+  display: flex;
+  bottom: 0;
+  box-sizing: border-box;
+  /* border-top: solid 0.1rem var(--Base); */
+}
+.DungeonControllerButtonWrapper{
+  width: clamp(15rem,20%,20rem);
+  height: 100%;
+  /* background-color: aqua; */
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+  .DungeonControllerButton{
+  font-family: 'Coco';
+  font-size: 1.5rem;
+  flex: 1;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  /* border: solid 0.1rem var(--Base); */
+  transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+  box-sizing: border-box;
+  /* background-blend-mode: difference; */
+}
+.DungeonControllerButton:hover{
+  background: rgba(0, 0, 0, 0.75);
+  letter-spacing: 0.1rem;
+}
+.PartyView{
+  flex: 1;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+}
+
+.PartyMember{
+  width: clamp(40rem,40%,100rem);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* border: solid 0.1rem var(--Base); */
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.PartyMemberpp{
+  height: 110%;
+  box-sizing: border-box;
+  aspect-ratio: 1/1.75;
+  border-radius: 2rem;
+  /* border: solid 0.1rem var(--Base); */
+  overflow: hidden;
+  position: absolute;
+  left: 1%;
+  top: -30%;
+  object-fit: cover;
+}
+
+.PartyMemberpp img{
+  width: 250%;
+  transform: translateX(-37.5%) translateY(-17.5%);
+}
+
+.PartyMemberInfo{
+  /* background: linear-gradient(rgba(201, 66, 199, 0.5) -10%, transparent); */
+  padding-left: 20vh;
+  height: 40%;
+  color: var(--Base);
+  display: flex;
+  flex-direction: column;
+
+}
+.PartyMemberInfo h2{
+  font-size: 4rem;
+  font-family: 'Coco';
+  font-weight: normal;
+}
+.PartyMemberInfo h3{
+  line-height: 0.1rem;
+  font-size: 2rem;
+  font-family: 'Coco';
+  font-weight: normal;
+}
+.PartyMemberInfo p{
+  line-height: 2.5rem;
+  font-size: 1rem;
+  opacity: 0.5;
+  font-weight: normal;
+}
+
+.PartyMemberMates{
+  /* background: red; */
+  flex: 1;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+
+}
+.PartyMemberMini{
+  /* background: black; */
+  border-radius: 0.5rem;
+  /* border: solid 0.1rem var(--Base); */
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+.PartyMemberMinipp{
+  min-height: 200%;
+  min-width: 100%;
+  width: 100%;
+  object-fit:contain;
+  overflow: hidden;
+  position: absolute;
+  box-sizing: border-box;
+  /* mix-blend-mode:; */
+  top:0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+  /* border: solid 0.1rem var(--Base); */
+  /* left: -25%; */
+  /* top: -25%; */
+  /* border-radius: 0.5rem; */
+}
+
+.PartyMemberMinipp img{
+  position: absolute;
+  width: 150%;
+  min-width: 30vw;
+  min-height: 100%;
+  left: -10vw;
+  top: -10vw;
+  /* filter: blur(0.25rem); */
+}
+
+.PartyMemberMini h3{
+  color: var(--Base);
+  font-size: 1.5rem;
+  font-weight: normal;
+  font-family: 'Coco';
+  letter-spacing: 0.25rem;
+  text-shadow: 0rem 0rem 0.25rem, 0rem 0rem 0.25rem var(--B);
+}
+
+.PartyMemberMini p{
+  color: var(--Base);
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: 'Coco';
+  letter-spacing: 0.3rem;
+  text-shadow: 0rem 0rem 0.25rem, 0rem 0rem 0.25rem var(--B);
+}

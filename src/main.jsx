@@ -3,13 +3,16 @@ import { createRoot } from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
+import LenisProvider from "./Components/LenisProvider.jsx"
 
 
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
     <BrowserRouter> 
-      <App />
-    </BrowserRouter>
+      <LenisProvider>
+        <App />
+      </LenisProvider>
+    </BrowserRouter> 
   // {/* </StrictMode> */}
 );
